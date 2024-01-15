@@ -5,7 +5,9 @@ import arashflixImg from "../assets/img/arashflix.webp";
 import awsImg from "../assets/img/aws-cert.png";
 import gameImg from "../assets/img/game.png";
 import threadImg from "../assets/img/thread.jpg";
-import guelphIng from "../assets/img/guelph.webp";
+import guelphImg from "../assets/img/guelph.webp";
+import businessImg from '../assets/img/business.jpeg'
+import codeImg from '../assets/img/code.png'
 import cryptoImg from "../assets/img/cryptography.webp";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
@@ -15,9 +17,18 @@ export const Projects = () => {
 
   const education = [
     {
-      title: "Software Engineering Major, Business Minor",
+      title: "University of Guelph",
+      imgUrl: guelphImg,
+    },
+    {
+      title: "Software Engineering Major",
       description: "University of Guelph",
-      imgUrl: guelphIng,
+      imgUrl: codeImg,
+    },
+    {
+      title: "Business Minor",
+      description: "University of Guelph",
+      imgUrl: businessImg,
     },
   ];
 
