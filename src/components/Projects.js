@@ -10,6 +10,21 @@ import businessImg from '../assets/img/business.jpeg'
 import codeImg from '../assets/img/code.png'
 import cryptoImg from "../assets/img/cryptography.webp";
 import colorSharp2 from "../assets/img/color-sharp2.png";
+import reactImg from '../assets/img/React-icon.png'
+import azureImg from '../assets/img/azure_logo.png'
+import cImg from '../assets/img/c_logo.png'
+import djangoImg from '../assets/img/django_logo.png'
+import gcpImg from '../assets/img/gcp_logo.png'
+import hibernateImg from '../assets/img/hibernate_logo.png'
+import javaImg from '../assets/img/java_logo.png'
+import javascriptImg from '../assets/img/javascript_logo.jpeg'
+import nodeImg from '../assets/img/nodejs_logo.png'
+import pythonImg from '../assets/img/python_logo.png'
+import reduxImg from '../assets/img/redux_logo.png'
+import springImg from '../assets/img/spring_logo.png'
+import reactnativeLogo from '../assets/img/reactnative_logo.png'
+
+
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -67,6 +82,59 @@ export const Projects = () => {
       description: "C, OpenGL, 3D Game Design, AI enemies",
       imgUrl: gameImg,
     },
+    {
+      title: "React",
+      imgUrl: reactImg,
+    },
+    {
+      title: "React Native",
+      imgUrl: reactnativeLogo,
+    },
+    {
+      title: "Azure",
+      imgUrl: azureImg,
+    },
+    {
+      title: "C",
+      imgUrl: cImg,
+    },
+    {
+      title: "Django",
+      imgUrl: djangoImg,
+    },
+    {
+      title: "GCP",
+      imgUrl: gcpImg,
+    },
+    {
+      title: "Hibernate",
+      imgUrl: hibernateImg,
+    },
+    {
+      title: "Java",
+      imgUrl: javaImg,
+    },
+    {
+      title: "Node.js",
+      imgUrl: nodeImg,
+    },
+    {
+      title: "JavaScript",
+      imgUrl: javascriptImg,
+    },
+    {
+      title: "Python",
+      imgUrl: pythonImg,
+    },
+    {
+      title: "Redux",
+      imgUrl: reduxImg,
+    },
+    {
+      title: "Spring",
+      imgUrl: springImg,
+    },
+
   ];
 
   return (
