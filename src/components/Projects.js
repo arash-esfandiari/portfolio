@@ -6,8 +6,8 @@ import awsImg from "../assets/img/aws-cert.png";
 import gameImg from "../assets/img/game.png";
 import threadImg from "../assets/img/thread.jpg";
 import guelphImg from "../assets/img/guelph.webp";
-import businessImg from '../assets/img/business.jpeg'
-import codeImg from '../assets/img/code.png'
+import businessImg from '../assets/img/business.webp'
+import softengImg from '../assets/img/softeng.jpeg'
 import cryptoImg from "../assets/img/cryptography.webp";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import reactImg from '../assets/img/React-icon.png'
@@ -38,7 +38,7 @@ export const Projects = () => {
     {
       title: "Software Engineering Major",
       description: "University of Guelph",
-      imgUrl: codeImg,
+      imgUrl: softengImg,
     },
     {
       title: "Business Minor",
