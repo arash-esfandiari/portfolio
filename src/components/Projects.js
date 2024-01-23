@@ -2,6 +2,7 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import arashshopImg from "../assets/img/arashshop.png";
 import arashflixImg from "../assets/img/arashflix.webp";
+import uberloneImg from '../assets/img/uberlone.jpeg'
 import awsImg from "../assets/img/aws-cert.png";
 import gameImg from "../assets/img/game.png";
 import threadImg from "../assets/img/thread.jpg";
@@ -59,6 +60,12 @@ export const Projects = () => {
       description: "React, Firebase, TMDB Live Database",
       imgUrl: arashflixImg,
       link: "https://arashflix.web.app/",
+    },
+    {
+      title: "Uberlone",
+      description: "React Native, Redux, Google Maps API",
+      imgUrl: uberloneImg,
+      link: "https://github.com/arash-esfandiari/uberlone",
     },
   ];
   const skills = [
