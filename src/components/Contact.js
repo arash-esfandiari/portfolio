@@ -26,7 +26,7 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("https://arash.baby/.netlify/functions/myFunction", {
+    let response = await fetch("https://arash.baby/.netlify/functions/sendMail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
