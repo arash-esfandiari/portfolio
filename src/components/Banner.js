@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(200 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = ["Software Engineer", "Full-Stack Developer", "Back-End Engineer"];
+  const toRotate = ["Software Engineer", "Artificial Intelligence Enthisiast", "Full-Stack Developer"];
   const period = 1000;
 
   useEffect(() => {
@@ -56,8 +56,9 @@ export const Banner = () => {
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <span className="tagline">Welcome to my Portfolio</span>
-                  <h1>{`Hi! I'm Arash.`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Software Engineer, "Full-Stack Developer", "Back-End Engineer" ]'><span className="wrap">{text}</span></span></h1>
+                  <h1>{`Hi! I'm Arash.`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Software Engineer, "Artifitial Intelligence Enthisiast", "Full-Stack Developer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Software Engineering and Business graduate; neat and high quality code is my top priority; enthusiastic about cutting edge technologies; familiar with the top design and architectural patterns.</p>
+                  <p>Extremely interested in the universe. Here to help evolution through AI.</p>
                   <button onClick={() => document.getElementById("connect").scrollIntoView()}>Let’s Connect <ArrowRightCircle size={25} /></button>
                 </div>}
             </TrackVisibility>
