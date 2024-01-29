@@ -24,6 +24,7 @@ import pythonImg from '../assets/img/python_logo.png'
 import reduxImg from '../assets/img/redux_logo.svg'
 import springImg from '../assets/img/spring_logo.png'
 import reactnativeLogo from '../assets/img/reactnative_logo.png'
+import goImg from '../assets/img/GoLogo.svg'
 
 
 import 'animate.css';
@@ -141,7 +142,10 @@ export const Projects = () => {
       title: "Spring",
       imgUrl: springImg,
     },
-
+    {
+      title: "Go",
+      imgUrl: goImg,
+    },
   ];
 
   return (
