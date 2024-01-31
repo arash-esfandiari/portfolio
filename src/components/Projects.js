@@ -91,36 +91,16 @@ export const Projects = () => {
       imgUrl: gameImg,
     },
     {
+      title: "C",
+      imgUrl: cImg,
+    },
+    {
       title: "React",
       imgUrl: reactImg,
     },
     {
       title: "React Native",
       imgUrl: reactnativeLogo,
-    },
-    {
-      title: "Azure",
-      imgUrl: azureImg,
-    },
-    {
-      title: "C",
-      imgUrl: cImg,
-    },
-    {
-      title: "Django",
-      imgUrl: djangoImg,
-    },
-    {
-      title: "GCP",
-      imgUrl: gcpImg,
-    },
-    {
-      title: "Hibernate",
-      imgUrl: hibernateImg,
-    },
-    {
-      title: "Java",
-      imgUrl: javaImg,
     },
     {
       title: "Node.js",
@@ -131,16 +111,36 @@ export const Projects = () => {
       imgUrl: javascriptImg,
     },
     {
-      title: "Python",
-      imgUrl: pythonImg,
+      title: "Django",
+      imgUrl: djangoImg,
     },
     {
       title: "Redux",
       imgUrl: reduxImg,
     },
     {
+      title: "Python",
+      imgUrl: pythonImg,
+    },
+    {
+      title: "Azure",
+      imgUrl: azureImg,
+    },
+    {
+      title: "GCP",
+      imgUrl: gcpImg,
+    },
+    {
+      title: "Java",
+      imgUrl: javaImg,
+    },
+    {
       title: "Spring",
       imgUrl: springImg,
+    },
+    {
+      title: "Hibernate",
+      imgUrl: hibernateImg,
     },
     {
       title: "Go",
