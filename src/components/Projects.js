@@ -25,30 +25,14 @@ import reduxImg from '../assets/img/redux_logo.svg'
 import springImg from '../assets/img/spring_logo.png'
 import reactnativeLogo from '../assets/img/reactnative_logo.png'
 import goImg from '../assets/img/GoLogo.svg'
+import k8Img from '../assets/img/k8.png'
+import dockerImg from '../assets/img/docker.png'
 
 
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
-
-  const education = [
-    {
-      title: "University of Guelph",
-      imgUrl: guelphImg,
-    },
-    {
-      title: "Software Engineering Major",
-      description: "University of Guelph",
-      imgUrl: softengImg,
-    },
-    {
-      title: "Business Minor",
-      description: "University of Guelph",
-      imgUrl: businessImg,
-    },
-  ];
-
   const projects = [
     {
       title: "Django E-Commerce",
@@ -68,12 +52,43 @@ export const Projects = () => {
       imgUrl: uberloneImg,
       link: "https://github.com/arash-esfandiari/uberlone",
     },
+    {
+      title: "Kubernetes",
+      description: "Pods, Deployments",
+      imgUrl: k8Img,
+      link: "https://github.com/arash-esfandiari/uberlone",
+    },
   ];
+  const education = [
+    {
+      title: "University of Guelph",
+      imgUrl: guelphImg,
+    },
+    {
+      title: "Software Engineering Major",
+      description: "University of Guelph",
+      imgUrl: softengImg,
+    },
+    {
+      title: "Business Minor",
+      description: "University of Guelph",
+      imgUrl: businessImg,
+    },
+  ];
+
   const skills = [
     {
       title: "AWS Certified Cloud Practitioner",
       description: "Cloud Architecture, Storages, Databases",
       imgUrl: awsImg,
+    },
+    {
+      title: "Docker",
+      imgUrl: dockerImg,
+    },
+    {
+      title: "Kubernetes",
+      imgUrl: k8Img,
     },
     {
       title: "Crypotography",
@@ -161,13 +176,13 @@ export const Projects = () => {
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                       <Nav.Item>
-                        <Nav.Link eventKey="first">Education 📚</Nav.Link>
+                        <Nav.Link eventKey="first">Projects 💻</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="second">Projects 💻</Nav.Link>
+                        <Nav.Link eventKey="second">Skills 🍳</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="third">Skills 🍳</Nav.Link>
+                        <Nav.Link eventKey="third">Education 📚</Nav.Link>
                       </Nav.Item>
                     </Nav>
                     <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
@@ -175,11 +190,11 @@ export const Projects = () => {
                         <Row>
                           <Row>
                             {
-                              education.map((educ, index) => {
+                              projects.map((project, index) => {
                                 return (
                                   <ProjectCard
                                     key={index}
-                                    {...educ}
+                                    {...project}
                                   />
                                 )
                               })
@@ -190,11 +205,11 @@ export const Projects = () => {
                       <Tab.Pane eventKey="second">
                         <Row>
                           {
-                            projects.map((project, index) => {
+                            skills.map((skill, index) => {
                               return (
                                 <ProjectCard
                                   key={index}
-                                  {...project}
+                                  {...skill}
                                 />
                               )
                             })
@@ -204,11 +219,11 @@ export const Projects = () => {
                       <Tab.Pane eventKey="third">
                         <Row>
                           {
-                            skills.map((skill, index) => {
+                            education.map((educ, index) => {
                               return (
                                 <ProjectCard
                                   key={index}
-                                  {...skill}
+                                  {...educ}
                                 />
                               )
                             })
