@@ -27,6 +27,11 @@ import reactnativeLogo from '../assets/img/reactnative_logo.png'
 import goImg from '../assets/img/GoLogo.svg'
 import k8Img from '../assets/img/k8.png'
 import dockerImg from '../assets/img/docker.png'
+import redisImg from '../assets/img/redis_logo.png'
+import postgreImg from '../assets/img/PostgreSQL_logo.svg'
+import mongodbImg from '../assets/img/mongoDB_logo.png'
+
+
 
 
 import 'animate.css';
@@ -57,6 +62,11 @@ export const Projects = () => {
       description: "Pods, Deployments",
       imgUrl: k8Img,
       link: "https://github.com/arash-esfandiari/uberlone",
+    },
+    {
+      title: "Game Programming",
+      description: "C, OpenGL, 3D Game Design, AI enemies",
+      imgUrl: gameImg,
     },
   ];
   const education = [
@@ -101,13 +111,44 @@ export const Projects = () => {
       imgUrl: threadImg,
     },
     {
-      title: "Game Programming",
-      description: "C, OpenGL, 3D Game Design, AI enemies",
-      imgUrl: gameImg,
-    },
-    {
       title: "C",
       imgUrl: cImg,
+    },
+    {
+      title: "Java",
+      imgUrl: javaImg,
+    },
+    {
+      title: "Spring",
+      imgUrl: springImg,
+    },
+    {
+      title: "Python",
+      imgUrl: pythonImg,
+    },
+    {
+      title: "Django",
+      imgUrl: djangoImg,
+    },
+    {
+      title: "Hibernate",
+      imgUrl: hibernateImg,
+    },
+    {
+      title: "Redux",
+      imgUrl: reduxImg,
+    },
+    {
+      title: "PostgreSQL",
+      imgUrl: postgreImg,
+    },
+    {
+      title: "MongoDB",
+      imgUrl: mongodbImg,
+    },
+    {
+      title: "Redis",
+      imgUrl: redisImg,
     },
     {
       title: "React",
@@ -126,36 +167,12 @@ export const Projects = () => {
       imgUrl: javascriptImg,
     },
     {
-      title: "Django",
-      imgUrl: djangoImg,
-    },
-    {
-      title: "Redux",
-      imgUrl: reduxImg,
-    },
-    {
-      title: "Python",
-      imgUrl: pythonImg,
-    },
-    {
       title: "Azure",
       imgUrl: azureImg,
     },
     {
       title: "GCP",
       imgUrl: gcpImg,
-    },
-    {
-      title: "Java",
-      imgUrl: javaImg,
-    },
-    {
-      title: "Spring",
-      imgUrl: springImg,
-    },
-    {
-      title: "Hibernate",
-      imgUrl: hibernateImg,
     },
     {
       title: "Go",
