@@ -43,7 +43,7 @@ export const Projects = () => {
       title: "Django E-Commerce",
       description: "Django, React, Redux, S3, Heroku, PostgreSQL",
       imgUrl: arashshopImg,
-      link: "https://arashshop-django-d2eba5cc85a0.herokuapp.com/",
+      link: "https://github.com/arash-esfandiari/ArashShop-Django",
     },
     {
       title: "Arashflix",
