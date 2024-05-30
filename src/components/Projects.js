@@ -61,7 +61,7 @@ export const Projects = () => {
       title: "Kubernetes",
       description: "Pods, Deployments",
       imgUrl: k8Img,
-      link: "https://github.com/arash-esfandiari/uberlone",
+      link: "https://github.com/arash-esfandiari/kubernetes-demo",
     },
     {
       title: "Game Programming",
