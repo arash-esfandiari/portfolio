@@ -30,6 +30,7 @@ import dockerImg from '../assets/img/docker.png'
 import redisImg from '../assets/img/redis_logo.png'
 import postgreImg from '../assets/img/PostgreSQL_logo.svg'
 import mongodbImg from '../assets/img/mongoDB_logo.png'
+import blockchainImg from '../assets/img/blockchain.jpg'
 
 
 
@@ -68,6 +69,12 @@ export const Projects = () => {
       description: "C, OpenGL, 3D Game Design, AI enemies",
       imgUrl: gameImg,
     },
+    {
+      title: "Blockchain",
+      description: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
+      imgUrl: blockchainImg,
+      link: "https://github.com/arash-esfandiari/AryeBlcokchain",
+    },
   ];
   const education = [
     {
@@ -102,7 +109,7 @@ export const Projects = () => {
     },
     {
       title: "Crypotography",
-      description: "Network Security, Public/Private Keys, Security Algorithms",
+      description: "Network Security, Cryptography Algorithm Details, Ethical Hacking",
       imgUrl: cryptoImg,
     },
     {
