@@ -25,7 +25,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
     <Col lg={12}>
       <div className="newsletter-bx wow slideInUp">
         <Row>
-          <h3>Thank you for your time.<br />I look forward to hearing from you. </h3>
+          <h3>Thank you for taking the time to review my portfolio. <br />If you have any questions or would like to discuss further opportunities, please feel free to get in touch. </h3>
         </Row>
       </div>
     </Col>
