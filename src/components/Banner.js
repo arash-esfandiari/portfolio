@@ -54,13 +54,28 @@ export const Banner = () => {
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                  <span className="tagline">Welcome to my Portfolio</span>
-                  <h1>{`Hi! I'm Arash.`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Software Engineer, "Artifitial Intelligence Enthusiast", "Full-Stack Developer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Software Engineering and Business graduate; neat and high quality code is my top priority; enthusiastic about cutting edge technologies; familiar with the top design and architectural patterns.</p>
-                  <p>Extremely interested in the universe. Here to help evolution through AI.</p>
-                  <button onClick={() => document.getElementById("connect").scrollIntoView()}>Let’s Connect <ArrowRightCircle size={25} /></button>
-                </div>}
+                isVisible ? (
+                  <div className="animate__animated animate__fadeIn">
+                    <span className="tagline">Welcome to my Portfolio</span>
+                    <h1>
+                      {`Hi! I'm Arash.`}
+                      <span className="txt-rotate">
+                        <span className="wrap">{text}</span>
+                      </span>
+                    </h1>
+                    <p>Lost in this Universe. Here to leave it better than I found it.</p>
+                    <p>Software Engineer working at industry leading AI company. </p>
+                    <button onClick={() => document.getElementById("connect").scrollIntoView()}>
+                      Let’s Connect <ArrowRightCircle size={25} />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="animate__animated animate__fadeOut">
+                    <h1>Check Back Soon!</h1>
+                    <p>Please scroll up to view.</p>
+                  </div>
+                )
+              }
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
