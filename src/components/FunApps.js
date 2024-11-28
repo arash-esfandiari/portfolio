@@ -5,9 +5,9 @@ import grapgingCalcImg from "../assets/img/extApps/graphing-calc.webp";
 import pythonIdeImg from "../assets/img/extApps/python-ide.webp";
 import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
 
-import GraphingCalculator from '../pages/GraphingCalc';
-import PythonIde from '../pages/PythonIde';
-import SprintManager from '../pages/SprintManager';
+import GraphingCalculator from '../apps/GraphingCalc';
+import PythonIde from '../apps/PythonIde';
+import SprintManager from '../apps/SprintManager';
 
 import { useState } from "react";
 

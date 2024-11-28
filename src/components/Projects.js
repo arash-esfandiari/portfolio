@@ -73,7 +73,7 @@ export const Projects = () => {
       title: "Blockchain",
       description: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
       imgUrl: blockchainImg,
-      link: "https://github.com/arash-esfandiari/AryeBlcokchain",
+      link: "https://github.com/arash-esfandiari/AryeBlockchain",
     },
   ];
   const education = [
@@ -108,7 +108,7 @@ export const Projects = () => {
       imgUrl: k8Img,
     },
     {
-      title: "Crypotography",
+      title: "Cryptography",
       description: "Network Security, Cryptography Algorithm Details, Ethical Hacking",
       imgUrl: cryptoImg,
     },
