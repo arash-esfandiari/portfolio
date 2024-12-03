@@ -1,44 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 // Board component represents the sprint board
 const Board = () => {
-    // Initialize issues with hardcoded data
     const [issues, setIssues] = useState([
-        { id: 1, title: 'Add random fun apps to portfolio', status: 'to_do' },
-        { id: 2, title: 'Create serverless function to send emails', status: 'to_do' },
-        { id: 3, title: 'Update button colours', status: 'to_do' },
-        { id: 4, title: 'Go to the gym, enoguh coding for today!', status: 'to_do' },
+        { id: 1, title: "Add random fun apps to portfolio", status: "to_do" },
+        { id: 2, title: "Create serverless function to send emails", status: "to_do" },
+        { id: 3, title: "Update button colours", status: "to_do" },
+        { id: 4, title: "Go to the gym, enough coding for today!", status: "to_do" },
     ]);
 
-    // Function to assign an issue to a user
+    const addTask = () => {
+        const title = prompt("Enter the task title:");
+        if (title) {
+            const newTask = {
+                id: issues.length + 1,
+                title,
+                status: "to_do",
+            };
+            setIssues([...issues, newTask]);
+        }
+    };
+
     const assignIssue = (issue) => {
-        const assignedTo = prompt('Enter your name:');
+        const assignedTo = prompt("Enter your name:");
         if (assignedTo) {
-            const updatedIssues = issues.map((i) => {
-                if (i.id === issue.id) {
-                    return { ...i, assignedTo, status: 'in_progress' };
-                }
-                return i;
-            });
+            const updatedIssues = issues.map((i) =>
+                i.id === issue.id
+                    ? { ...i, assignedTo, status: "in_progress" }
+                    : i
+            );
             setIssues(updatedIssues);
         }
     };
 
-    // Function to mark an issue as complete
     const markAsComplete = (issue) => {
         const completedDate = new Date().toLocaleDateString();
-        const updatedIssues = issues.map((i) => {
-            if (i.id === issue.id) {
-                return { ...i, status: 'done', completedDate };
-            }
-            return i;
-        });
+        const updatedIssues = issues.map((i) =>
+            i.id === issue.id
+                ? { ...i, status: "done", completedDate }
+                : i
+        );
         setIssues(updatedIssues);
     };
 
-    // Render issues in each section
-    const renderIssues = (status) => {
-        return issues
+    const renderIssues = (status) =>
+        issues
             .filter((issue) => issue.status === status)
             .map((issue) => (
                 <Issue
@@ -48,23 +54,23 @@ const Board = () => {
                     markAsComplete={markAsComplete}
                 />
             ));
-    };
 
     return (
         <div className="app">
             <h1>Simple Sprint Manager</h1>
+            <button className="add-task-btn" onClick={addTask}>Add Task</button>
             <div className="board">
                 <div className="section">
                     <h2>To Do</h2>
-                    {renderIssues('to_do')}
+                    {renderIssues("to_do")}
                 </div>
                 <div className="section">
                     <h2>In Progress</h2>
-                    {renderIssues('in_progress')}
+                    {renderIssues("in_progress")}
                 </div>
                 <div className="section">
                     <h2>Done</h2>
-                    {renderIssues('done')}
+                    {renderIssues("done")}
                 </div>
             </div>
             <style>{styles}</style>
@@ -72,27 +78,16 @@ const Board = () => {
     );
 };
 
-// Issue component represents a single issue
 const Issue = ({ issue, assignIssue, markAsComplete }) => {
-    // Render assign button if issue is not assigned
-    const renderAssignButton = () => {
-        if (!issue.assignedTo) {
-            return (
-                <button onClick={() => assignIssue(issue)}>Assign</button>
-            );
-        }
-        return null;
-    };
+    const renderAssignButton = () =>
+        !issue.assignedTo && (
+            <button onClick={() => assignIssue(issue)}>Assign</button>
+        );
 
-    // Render mark as complete button if issue is in progress
-    const renderMarkAsCompleteButton = () => {
-        if (issue.status === 'in_progress') {
-            return (
-                <button onClick={() => markAsComplete(issue)}>Mark as Complete</button>
-            );
-        }
-        return null;
-    };
+    const renderMarkAsCompleteButton = () =>
+        issue.status === "in_progress" && (
+            <button onClick={() => markAsComplete(issue)}>Mark as Complete</button>
+        );
 
     return (
         <div className="issue">
@@ -105,68 +100,94 @@ const Issue = ({ issue, assignIssue, markAsComplete }) => {
     );
 };
 
-// CSS Styles
 const styles = `
-/* Styles for the main app container */
-.app {
-  max-width: 90vw;
-  margin: 40px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: #000000;
-  background-color: white;
-}
+  .app {
+    max-width: 95vw;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 12px;
+    color: #000;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 
-/* Flexbox container for the board sections */
-.board {
-  display: flex;
-  justify-content: space-between;
-}
+  .add-task-btn {
+    margin: 10px 0;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
 
-/* Shared styles for each section (To Do, In Progress, Done) */
-.section {
-  flex-basis: 30%;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-}
+  .add-task-btn:hover {
+    background-color: #0056b3;
+  }
 
-/* Style for section headings (e.g., "To Do", "In Progress") */
-.section h2 {
-  margin-top: 0;
-}
+  .board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-/* Styles for individual issues in the board */
-.issue {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-}
+  .section {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
 
-/* Style for issue headings (e.g., issue titles) */
-.issue h3 {
-  margin-top: 0;
-}
+  .section h2 {
+    margin-top: 0;
+    font-size: 14px;
+  }
 
-/* Default button styles */
-button {
-  background-color: #4CAF50;
-  color: #000000;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+  .issue {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 12px;
+  }
 
-/* Hover effect for buttons */
-button:hover {
-  background-color: #3e8e41;
-}
+  .issue h3 {
+    margin-top: 0;
+    font-size: 12px;
+  }
+
+  .issue p {
+    font-size: 10px;
+    margin: 5px 0;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  @media (min-width: 768px) {
+    .board {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .section {
+      flex-basis: 30%;
+    }
+  }
 `;
 
 export default Board;

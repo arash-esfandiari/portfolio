@@ -406,11 +406,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 100% !important;
 }
 
-
 .nav-link#projects-tabs-tab-first {
   border-radius: 55px 0px 0px 55px;
 }
-
 
 .nav-link#projects-tabs-tab-third {
   border-radius: 0 55px 55px 0;
