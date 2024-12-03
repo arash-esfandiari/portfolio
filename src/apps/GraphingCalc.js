@@ -19,54 +19,55 @@ const GraphingCalculator = () => {
         maxWidth: "60vw",
         margin: "50px auto",
         padding: "20px",
-        background: "#fff",
+        background: "#121212", // Dark mode background
         borderRadius: "8px",
-        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.8)",
         textAlign: "center",
+        color: "#e0e0e0", // Light text color
     };
 
     const inputAreaStyle = {
-        display: "flex", // Enables flexbox
-        flexDirection: "column", // Stacks label, input, and button vertically
-        alignItems: "center", // Centers horizontally
-        justifyContent: "center", // Centers vertically
-        marginBottom: "20px", // Keeps spacing below the input area
-        gap: "10px", // Adds space between elements
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: "20px",
+        gap: "10px",
     };
 
     const inputStyle = {
         padding: "10px",
         width: "60%",
         marginRight: "10px",
-        border: "1px solid #ccc",
+        border: "1px solid #444", // Dark border
         borderRadius: "4px",
+        background: "#2c2c2c", // Dark input background
+        color: "#e0e0e0", // Light input text
     };
 
     const buttonStyle = {
         padding: "10px 20px",
-        backgroundColor: "#007bff",
+        backgroundColor: "#6a0dad", // Purple button
         color: "white",
         border: "none",
         borderRadius: "4px",
         cursor: "pointer",
         fontSize: "16px",
+        transition: "background-color 0.3s ease", // Smooth hover transition
     };
 
-    const buttonHoverStyle = {
-        backgroundColor: "#0056b3",
-    };
 
     const canvasStyle = {
         width: "100%",
         display: "block",
         margin: "0 auto",
-        border: "1px solid #ccc",
-        background: "#f9f9f9",
+        border: "1px solid #444", // Dark canvas border
+        background: "#1e1e1e", // Dark canvas background
     };
 
     const drawAxes = (ctx) => {
         ctx.clearRect(0, 0, width, height);
-        ctx.strokeStyle = "#333";
+        ctx.strokeStyle = "#e0e0e0"; // Light axis color
         ctx.lineWidth = 1;
 
         // Draw x-axis
@@ -108,7 +109,7 @@ const GraphingCalculator = () => {
     };
 
     const plotFunction = (ctx, func) => {
-        ctx.strokeStyle = "#007bff";
+        ctx.strokeStyle = "#6a0dad"; // Purple graph line
         ctx.lineWidth = 2;
 
         ctx.beginPath();
@@ -164,7 +165,7 @@ const GraphingCalculator = () => {
 
     return (
         <div style={containerStyle}>
-            <h1 style={{ color: "#333" }}>Graphing Calculator</h1>
+            <h1 style={{ color: "#e0e0e0" }}>Graphing Calculator</h1>
             <div style={inputAreaStyle}>
                 <label htmlFor="function">
                     Function (e.g., x^2, sin(x), log(x)):
@@ -179,10 +180,9 @@ const GraphingCalculator = () => {
                 />
                 <button
                     onClick={handlePlot}
-                    style={{
-                        ...buttonStyle,
-                        ...(functionInput ? {} : buttonHoverStyle),
-                    }}
+                    style={{ ...buttonStyle, }}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = "#4b0082")}
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = "#6a0dad")}
                 >
                     Plot Graph
                 </button>

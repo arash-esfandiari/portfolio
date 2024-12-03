@@ -1,19 +1,48 @@
+import { useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import colorSharp from "../assets/img/color-sharp.png";
+
+// App and respective image imports
+import GraphingCalculator from '../apps/GraphingCalc';
 import grapgingCalcImg from "../assets/img/extApps/graphing-calc.webp";
+
+import PythonIde from '../apps/PythonIde';
 import pythonIdeImg from "../assets/img/extApps/python-ide.webp";
+
+import SprintManager from '../apps/SprintManager';
 import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
 
-import GraphingCalculator from '../apps/GraphingCalc';
-import PythonIde from '../apps/PythonIde';
-import SprintManager from '../apps/SprintManager';
+import ImageConverter from '../apps/ImageConverter';
+import ImgConverterImg from "../assets/img/extApps/img-converter.webp";
 
-import { useState } from "react";
 
-export const FunApps = () => {
+export const RandomApps = () => {
   const [app, setApp] = useState(null); // Store the selected app
   const [currentAppName, setCurrentAppName] = useState(""); // Track the name of the current app
+
+  const extApps = [
+    {
+      name: "Graphing Calculator",
+      image: grapgingCalcImg,
+      component: <GraphingCalculator />,
+    },
+    {
+      name: "Python IDE",
+      image: pythonIdeImg,
+      component: <PythonIde />,
+    },
+    {
+      name: "Simple Sprint Manager",
+      image: sprintManagerImg,
+      component: <SprintManager />,
+    },
+    {
+      name: "Image Converter",
+      image: ImgConverterImg,
+      component: <ImageConverter />,
+    },
+  ];
 
   const responsive = {
     superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
@@ -73,32 +102,14 @@ export const FunApps = () => {
     setCurrentAppName("");
   };
 
-  const extApps = [
-    {
-      name: "Graphing Calculator",
-      image: grapgingCalcImg,
-      component: <GraphingCalculator />,
-    },
-    {
-      name: "Python IDE",
-      image: pythonIdeImg,
-      component: <PythonIde />,
-    },
-    {
-      name: "Simple Sprint Manager",
-      image: sprintManagerImg,
-      component: <SprintManager />,
-    },
-  ];
-
   return (
     <section className="skill" id="skills">
       <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
-              <h2>Play around with my Apps</h2>
-              <p>Quick apps made in under 2 hours</p>
+              <h2>Try Out My Handy Custom Apps</h2>
+              <p>Responsive, practical tools created to showcase my coding skills and creativity.</p>
               <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                 {extApps.map((appItem, index) => (
                   <div

@@ -19,7 +19,7 @@ const styles = {
   },
   title: {
     textAlign: "center",
-    color: "#1DB954",
+    color: "#6a0dad",
   },
   button: {
     padding: "10px 20px",
@@ -27,9 +27,10 @@ const styles = {
     cursor: "pointer",
     border: "none",
     borderRadius: "5px",
-    backgroundColor: "#007bff",
+    backgroundColor: "#6a0dad",
     color: "#fff",
     marginBottom: "20px",
+    transition: "background-color 0.3s ease", // Smooth hover transition
   },
   split: {
     display: "flex",
@@ -85,7 +86,11 @@ const PythonIde = () => {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Simple Python Code Editor</h1>
-      <button style={styles.button} onClick={runCode}>
+      <button
+        style={styles.button}
+        onClick={runCode}
+        onMouseEnter={(e) => (e.target.style.backgroundColor = "#4b0082")}
+        onMouseLeave={(e) => (e.target.style.backgroundColor = "#6a0dad")}>
         Run
       </button>
       <Split

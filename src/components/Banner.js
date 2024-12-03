@@ -11,7 +11,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(200 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = ["Software Engineer", "Artificial Intelligence Enthusiast", "Full-Stack Developer"];
+  const toRotate = ["Software Engineer", "AI Master's Student", "Full-Stack Developer"];
   const period = 1000;
 
   useEffect(() => {
@@ -58,13 +58,15 @@ export const Banner = () => {
                   <div className="animate__animated animate__fadeIn">
                     <span className="tagline">Welcome to my Portfolio</span>
                     <h1>
-                      {`Hi! I'm Arash.`}
+                      {`Hi! I'm Arash. `}
+                      <br />
                       <span className="txt-rotate">
                         <span className="wrap">{text}</span>
                       </span>
                     </h1>
-                    <p>Lost in this Universe. Here to leave it better than I found it.</p>
-                    <p>Software Engineer working at industry leading AI company. </p>
+
+                    <p>Wandering through the vast universe, driven to make a meaningful impact.</p>
+                    <p>Software Engineer at Scale AI, pursuing a Master’s in Artificial Intelligence.</p>
                     <button onClick={() => document.getElementById("connect").scrollIntoView()}>
                       Let’s Connect <ArrowRightCircle size={25} />
                     </button>
