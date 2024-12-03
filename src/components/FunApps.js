@@ -98,7 +98,7 @@ export const FunApps = () => {
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
               <h2>Play around with my Apps</h2>
-              <p>Useful tools and fun apps created in under 2 hours.</p>
+              <p>Quick apps made in under 2 hours</p>
               <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                 {extApps.map((appItem, index) => (
                   <div
