@@ -328,7 +328,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .horizontal-slider {
   display: flex;
-  gap: 30px; /* Larger gap for desktop */
+  gap: 10px; /* Larger gap for desktop */
   overflow-x: auto;
   padding: 20px; /* Add space to the left of the first item */
   scroll-behavior: smooth;
