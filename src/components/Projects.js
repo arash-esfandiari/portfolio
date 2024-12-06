@@ -69,12 +69,12 @@ export const Projects = () => {
       link: "https://github.com/arash-esfandiari/kubernetes-demo",
     },
     {
-      title: "Game Programming",
+      title: "YourCraft",
       description: "C, OpenGL, 3D Game Design, AI enemies",
       imgUrl: gameImg,
     },
     {
-      title: "Blockchain",
+      title: "RashCoin",
       description: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
       imgUrl: blockchainImg,
       link: "https://github.com/arash-esfandiari/AryeBlockchain",
@@ -204,13 +204,13 @@ export const Projects = () => {
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                       <Nav.Item>
-                        <Nav.Link eventKey="first">Projects 💻</Nav.Link>
+                        <Nav.Link eventKey="first">Education 📚</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
                         <Nav.Link eventKey="second">Skills 🍳</Nav.Link>
                       </Nav.Item>
                       <Nav.Item>
-                        <Nav.Link eventKey="third">Education 📚</Nav.Link>
+                        <Nav.Link eventKey="third">Projects 💻</Nav.Link>
                       </Nav.Item>
                     </Nav>
                     <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
@@ -218,11 +218,11 @@ export const Projects = () => {
                         <Row>
                           <Row>
                             {
-                              projects.map((project, index) => {
+                              education.map((educItem, index) => {
                                 return (
                                   <ProjectCard
                                     key={index}
-                                    {...project}
+                                    {...educItem}
                                   />
                                 )
                               })
@@ -247,11 +247,11 @@ export const Projects = () => {
                       <Tab.Pane eventKey="third">
                         <Row>
                           {
-                            education.map((educ, index) => {
+                            projects.map((project, index) => {
                               return (
                                 <ProjectCard
                                   key={index}
-                                  {...educ}
+                                  {...project}
                                 />
                               )
                             })

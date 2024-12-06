@@ -330,8 +330,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: flex;
   gap: 40px; /* Add space between items */
   overflow-x: auto;
-  padding: 20px 0;
+  padding: 40px; /* Add space to the left of the first item */
   scroll-behavior: smooth;
+  position: relative; /* Allow child elements to overflow */
 }
 
 .horizontal-slider::-webkit-scrollbar {
@@ -352,10 +353,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
   min-width: 340px; /* Ensure items are wide enough */
   transition: transform 0.3s ease-in-out;
+  position: relative; /* Ensure hover effects extend beyond container */
+  z-index: 1; /* Make sure it appears above other elements */
 }
 
 .horizontal-slider .item:hover {
-  transform: scale(1.05);
+  transform: scale(1.1); /* Scale on hover */
+  z-index: 10; /* Ensure it stays on top of other items */
 }
 
 .horizontal-slider .item img {
@@ -367,9 +371,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .horizontal-slider .item img:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 1);
-  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Glow effect */
 }
+
 .background-image-left {
   top: 28%;
   position: absolute;
@@ -459,19 +463,21 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-bottom: 24px;
 }
 
+/* start with covered project cards */
+/* 
 .proj-imgbx::before {
   content: "";
   background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
   opacity: 0.85;
   position: absolute;
   width: 100%;
-  height: 100%; /* Start fully covering the box */
+  height: 100%;
   transition: height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 
 .proj-imgbx:hover::before {
-  height: 0; /* Rolls up and disappears on hover */
-  opacity: 0; /* Gradually fades out */
+  height: 0; 
+  opacity: 0;
 }
 
 .proj-txtx {
@@ -481,17 +487,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  opacity: 1; /* Start fully visible */
+  opacity: 1;
   width: 100%;
-  color: white; /* Ensure text is visible on the gradient */
+  color: white;
 }
 
 .proj-imgbx:hover .proj-txtx {
-  opacity: 0; /* Fade out on hover */
-  transform: translate(-50%, -70%); /* Move text slightly upwards */
-}
+  opacity: 0;
+  transform: translate(-50%, -70%); 
+} */
 
-/* 
+
 .proj-imgbx::before {
   content: "";
   background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
@@ -520,7 +526,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .proj-imgbx:hover .proj-txtx {
   top: 50%;
   opacity: 1;
-} */
+} 
 
 .proj-txtx h4 {
   font-size: 30px;
