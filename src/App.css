@@ -328,15 +328,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .horizontal-slider {
   display: flex;
-  gap: 10px; /* Larger gap for desktop */
-  overflow-x: auto;
+  gap: 10px; /* Gap between items */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-y: hidden; /* Ensure no clipping for pop-out effects */
   padding: 20px; /* Add space to the left of the first item */
   scroll-behavior: smooth;
   position: relative; /* Allow child elements to overflow */
+  box-sizing: border-box; /* Prevent padding from increasing width */
 }
 
 .horizontal-slider::-webkit-scrollbar {
-  height: 8px;
+  height: 8px; /* Adjust scrollbar height */
 }
 
 .horizontal-slider::-webkit-scrollbar-thumb {
@@ -353,10 +355,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
   padding: 30px;
   transition: transform 0.3s ease-in-out;
+  position: relative; /* Ensure z-index works */
+  z-index: 1; /* Keep hover items above others */
 }
 
 .horizontal-slider .item:hover {
   transform: scale(1.1);
+  z-index: 10; /* Ensure the item appears above others */
 }
 
 .horizontal-slider .item img {
@@ -413,6 +418,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
   .horizontal-slider .item {
     min-width: 180px; /* Smallest item size for phones */
+    flex-shrink: 0; /* Prevent items from shrinking smaller than their size */
   }
 
   .horizontal-slider .item img {
