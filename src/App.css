@@ -328,9 +328,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .horizontal-slider {
   display: flex;
-  gap: 40px; /* Add space between items */
+  gap: 30px; /* Larger gap for desktop */
   overflow-x: auto;
-  padding: 40px; /* Add space to the left of the first item */
+  padding: 20px; /* Add space to the left of the first item */
   scroll-behavior: smooth;
   position: relative; /* Allow child elements to overflow */
 }
@@ -340,7 +340,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .horizontal-slider::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #353535;
   border-radius: 4px;
 }
 
@@ -351,29 +351,75 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .horizontal-slider .item {
   flex: 0 0 auto;
   text-align: center;
-  min-width: 340px; /* Ensure items are wide enough */
+  padding: 30px;
   transition: transform 0.3s ease-in-out;
-  position: relative; /* Ensure hover effects extend beyond container */
-  z-index: 1; /* Make sure it appears above other elements */
 }
 
 .horizontal-slider .item:hover {
-  transform: scale(1.1); /* Scale on hover */
-  z-index: 10; /* Ensure it stays on top of other items */
+  transform: scale(1.1);
 }
 
 .horizontal-slider .item img {
-  width: 320px;
-  height: 200px;
+  width: 320px; /* Larger width for desktop */
+  height: 200px; /* Larger height for desktop */
   object-fit: cover;
   border-radius: 10px;
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .horizontal-slider .item img:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Glow effect */
+  box-shadow: 0 0 25px rgb(87, 86, 86); /* Increased glow effect */
 }
 
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .horizontal-slider {
+    gap: 30px; /* Smaller gap for medium screens */
+    padding: 15px 15px 15px 30px; /* Adjusted padding for medium screens */
+  }
+
+  .horizontal-slider .item {
+    min-width: 300px; /* Medium item size for tablets */
+  }
+
+  .horizontal-slider .item img {
+    padding: 5px;
+    width: 280px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-slider {
+    gap: 20px; /* Smaller gap for medium screens */
+    padding: 10px 10px 10px 20px; /* Adjusted padding for medium screens */
+  }
+
+  .horizontal-slider .item {
+    min-width: 260px; /* Medium item size for tablets */
+  }
+
+  .horizontal-slider .item img {
+    width: 240px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .horizontal-slider {
+    gap: 10px; /* Smallest gap for phones */
+    padding: 10px 5px 10px 10px; /* Adjusted padding for phones */
+  }
+
+  .horizontal-slider .item {
+    min-width: 180px; /* Smallest item size for phones */
+  }
+
+  .horizontal-slider .item img {
+    width: 160px;
+    height: 110px;
+  }
+}
 .background-image-left {
   top: 28%;
   position: absolute;
