@@ -20,10 +20,10 @@ export const RandomApps = () => {
   const sliderRef = useRef(null);
 
   const extApps = [
+    { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
     { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
     { name: "Python IDE", image: pythonIdeImg, component: <PythonIde /> },
-    { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> },
-    { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
+    { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> }
   ];
 
   const handleAppClick = (appName, component) => {
