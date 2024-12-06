@@ -316,6 +316,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	font-size: 45px;
 	font-weight: 700;
 }
+.skill h5 {
+  margin: 30px;
+}
 .skill p {
     color: #B8B8B8;
     font-size: 18px;
@@ -323,14 +326,49 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     line-height: 1.5em;
     margin: 14px 0 75px 0;
 }
-.skill-slider {
-  width: 80%;
-  margin: 0 auto;
-  position: relative;
+.horizontal-slider {
+  display: flex;
+  gap: 40px; /* Add space between items */
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-behavior: smooth;
 }
-.skill-slider .item img {
-  width: 50%;
-  margin: 0 auto 15px auto;
+
+.horizontal-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.horizontal-slider::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.horizontal-slider::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.horizontal-slider .item {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 340px; /* Ensure items are wide enough */
+  transition: transform 0.3s ease-in-out;
+}
+
+.horizontal-slider .item:hover {
+  transform: scale(1.05);
+}
+
+.horizontal-slider .item img {
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.horizontal-slider .item img:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  transform: scale(1.1);
 }
 .background-image-left {
   top: 28%;
@@ -427,6 +465,39 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   opacity: 0.85;
   position: absolute;
   width: 100%;
+  height: 100%; /* Start fully covering the box */
+  transition: height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.proj-imgbx:hover::before {
+  height: 0; /* Rolls up and disappears on hover */
+  opacity: 0; /* Gradually fades out */
+}
+
+.proj-txtx {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  opacity: 1; /* Start fully visible */
+  width: 100%;
+  color: white; /* Ensure text is visible on the gradient */
+}
+
+.proj-imgbx:hover .proj-txtx {
+  opacity: 0; /* Fade out on hover */
+  transform: translate(-50%, -70%); /* Move text slightly upwards */
+}
+
+/* 
+.proj-imgbx::before {
+  content: "";
+  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+  opacity: 0.85;
+  position: absolute;
+  width: 100%;
   height: 0;
   transition: 0.4s ease-in-out;
 }
@@ -449,7 +520,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .proj-imgbx:hover .proj-txtx {
   top: 50%;
   opacity: 1;
-}
+} */
 
 .proj-txtx h4 {
   font-size: 30px;

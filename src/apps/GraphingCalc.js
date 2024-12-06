@@ -149,7 +149,7 @@ const GraphingCalculator = () => {
         const ctx = canvas.getContext("2d");
 
         try {
-            const func = parseFunction(functionInput);
+            const func = parseFunction(functionInput.toLowerCase());
             drawAxes(ctx);
             plotFunction(ctx, func);
         } catch (error) {

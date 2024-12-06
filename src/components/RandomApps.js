@@ -1,97 +1,36 @@
-import { useState } from "react";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { useState, useRef } from "react";
 import colorSharp from "../assets/img/color-sharp.png";
 
 // App and respective image imports
-import GraphingCalculator from '../apps/GraphingCalc';
+import GraphingCalculator from "../apps/GraphingCalc";
 import grapgingCalcImg from "../assets/img/extApps/graphing-calc.webp";
 
-import PythonIde from '../apps/PythonIde';
+import PythonIde from "../apps/PythonIde";
 import pythonIdeImg from "../assets/img/extApps/python-ide.webp";
 
-import SprintManager from '../apps/SprintManager';
+import SprintManager from "../apps/SprintManager";
 import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
 
-import ImageConverter from '../apps/ImageConverter';
+import ImageConverter from "../apps/ImageConverter";
 import ImgConverterImg from "../assets/img/extApps/img-converter.webp";
 
-
 export const RandomApps = () => {
-  const [app, setApp] = useState(null); // Store the selected app
-  const [currentAppName, setCurrentAppName] = useState(""); // Track the name of the current app
+  const [app, setApp] = useState(null);
+  const [currentAppName, setCurrentAppName] = useState("");
+  const sliderRef = useRef(null);
 
   const extApps = [
-    {
-      name: "Graphing Calculator",
-      image: grapgingCalcImg,
-      component: <GraphingCalculator />,
-    },
-    {
-      name: "Python IDE",
-      image: pythonIdeImg,
-      component: <PythonIde />,
-    },
-    {
-      name: "Simple Sprint Manager",
-      image: sprintManagerImg,
-      component: <SprintManager />,
-    },
-    {
-      name: "Image Converter",
-      image: ImgConverterImg,
-      component: <ImageConverter />,
-    },
+    { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
+    { name: "Python IDE", image: pythonIdeImg, component: <PythonIde /> },
+    { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> },
+    { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
   ];
-
-  const responsive = {
-    superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
-    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
-    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
-    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
-  };
-
-  const styles = {
-    linkStyles: {
-      textDecoration: 'none',
-      color: 'inherit',
-      cursor: 'pointer',
-    },
-    imgStyles: {
-      width: '160px',
-      height: '100px',
-      objectFit: 'cover',
-      borderRadius: '10px',
-    },
-    closeButton: {
-      position: "absolute",
-      top: "10px",
-      left: "10px",
-      backgroundColor: "transparent",
-      color: "white",
-      border: "none",
-      borderRadius: "5px",
-      cursor: "pointer",
-      padding: "5px 10px",
-      zIndex: 1000,
-    },
-    appContainer: {
-      position: "relative",
-      marginTop: "20px",
-      padding: "10px",
-      border: "1px solid #ccc",
-      borderRadius: "10px",
-      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-    },
-  };
 
   const handleAppClick = (appName, component) => {
     if (currentAppName === appName) {
-      // Close the app if it's already selected
       setApp(null);
       setCurrentAppName("");
     } else {
-      // Open the selected app
       setApp(component);
       setCurrentAppName(appName);
     }
@@ -102,6 +41,13 @@ export const RandomApps = () => {
     setCurrentAppName("");
   };
 
+  const handleScroll = (e) => {
+    e.preventDefault();
+    if (sliderRef.current) {
+      sliderRef.current.scrollLeft += e.deltaY * 1.5; // Adjust scroll speed
+    }
+  };
+
   return (
     <section className="skill" id="skills">
       <div className="container">
@@ -110,27 +56,44 @@ export const RandomApps = () => {
             <div className="skill-bx wow zoomIn">
               <h2>Try Out My Handy Custom Apps</h2>
               <p>Responsive, practical tools created to showcase my coding skills and creativity.</p>
-              <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+              <div
+                className="horizontal-slider"
+                ref={sliderRef}
+                onWheel={handleScroll} // Enable horizontal scrolling with trackpad or mouse wheel
+              >
                 {extApps.map((appItem, index) => (
                   <div
                     className="item"
                     key={index}
                     onClick={() => handleAppClick(appItem.name, appItem.component)}
-                    style={styles.linkStyles}
                   >
-                    <img src={appItem.image} alt={appItem.name} style={styles.imgStyles} />
+                    <img src={appItem.image} alt={appItem.name} />
                     <h5>{appItem.name}</h5>
                   </div>
                 ))}
-              </Carousel>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <img className="background-image-left" src={colorSharp} alt="Background" />
       {app && (
-        <div style={styles.appContainer}>
-          <button style={styles.closeButton} onClick={handleCloseApp}>
+        <div style={{ position: "relative", marginTop: "20px", padding: "10px", borderRadius: "10px", boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)" }}>
+          <button
+            style={{
+              position: "absolute",
+              top: "10px",
+              left: "10px",
+              backgroundColor: "transparent",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              padding: "5px 10px",
+              zIndex: 1000,
+            }}
+            onClick={handleCloseApp}
+          >
             X
           </button>
           {app}

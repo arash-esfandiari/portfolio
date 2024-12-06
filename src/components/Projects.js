@@ -1,36 +1,40 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import arashshopImg from "../assets/img/arashshop.png";
-import arashflixImg from "../assets/img/arashflix.webp";
-import uberloneImg from '../assets/img/uberlone.jpeg'
-import awsImg from "../assets/img/aws-cert.png";
-import gameImg from "../assets/img/game.png";
-import threadImg from "../assets/img/thread.jpg";
-import guelphImg from "../assets/img/guelph.webp";
-import businessImg from '../assets/img/business.webp'
-import softengImg from '../assets/img/softeng.jpeg'
-import cryptoImg from "../assets/img/cryptography.webp";
+// Design Images
 import colorSharp2 from "../assets/img/color-sharp2.png";
-import reactImg from '../assets/img/React-icon.png'
-import azureImg from '../assets/img/azure_logo.png'
-import cImg from '../assets/img/c_logo.png'
-import djangoImg from '../assets/img/django_logo.png'
-import gcpImg from '../assets/img/gcp_logo.png'
-import hibernateImg from '../assets/img/hibernate_logo.png'
-import javaImg from '../assets/img/java_logo.png'
-import javascriptImg from '../assets/img/javascript_logo.png'
-import nodeImg from '../assets/img/nodejs_logo.png'
-import pythonImg from '../assets/img/python_logo.png'
-import reduxImg from '../assets/img/redux_logo.svg'
-import springImg from '../assets/img/spring_logo.png'
-import reactnativeLogo from '../assets/img/reactnative_logo.png'
-import goImg from '../assets/img/GoLogo.svg'
-import k8Img from '../assets/img/k8.png'
-import dockerImg from '../assets/img/docker.png'
-import redisImg from '../assets/img/redis_logo.png'
-import postgreImg from '../assets/img/PostgreSQL_logo.svg'
-import mongodbImg from '../assets/img/mongoDB_logo.png'
-import blockchainImg from '../assets/img/blockchain.jpg'
+// Projects Images
+import arashshopImg from "../assets/img/projects/arashshop.png";
+import arashflixImg from "../assets/img/projects/arashflix.webp";
+import uberloneImg from '../assets/img/projects/uberlone.jpeg'
+import gameImg from "../assets/img/projects/game.png";
+import k8Img from '../assets/img/projects/k8.png'
+import blockchainImg from '../assets/img/projects/blockchain.webp'
+// Education Images
+import guelphImg from "../assets/img/education/guelph.webp";
+import softengImg from '../assets/img/education/softwareEng.webp'
+import businessImg from '../assets/img/education/money.png'
+// Skils Images
+import awsImg from "../assets/img/skills/aws-cert.png";
+import parallelProgImg from "../assets/img/skills/parallel-prog.webp";
+import cryptoImg from "../assets/img/skills/crypto.png";
+import reactImg from '../assets/img/skills/React-icon.png'
+import azureImg from '../assets/img/skills/azure_logo.png'
+import cImg from '../assets/img/skills/c_logo.png'
+import djangoImg from '../assets/img/skills/django_logo.webp'
+import gcpImg from '../assets/img/skills/gcp_logo.png'
+import hibernateImg from '../assets/img/skills/hibernate_logo.png'
+import javaImg from '../assets/img/skills/java_logo.png'
+import javascriptImg from '../assets/img/skills/javascript_logo.png'
+import nodeImg from '../assets/img/skills/nodejs_logo.png'
+import pythonImg from '../assets/img/skills/python_logo.png'
+import reduxImg from '../assets/img/skills/redux_logo.svg'
+import springImg from '../assets/img/skills/spring_logo.png'
+import reactnativeLogo from '../assets/img/skills/react-native.svg'
+import goImg from '../assets/img/skills/GoLogo.svg'
+import dockerImg from '../assets/img/skills/docker.png'
+import redisImg from '../assets/img/skills/redis_logo.png'
+import postgreImg from '../assets/img/skills/PostgreSQL_logo.svg'
+import mongodbImg from '../assets/img/skills/mongoDB_logo.png'
 
 
 
@@ -115,7 +119,7 @@ export const Projects = () => {
     {
       title: "Parallel Programming",
       description: "C, OpenGL, OpenCL, Multi-Threading",
-      imgUrl: threadImg,
+      imgUrl: parallelProgImg,
     },
     {
       title: "C",
