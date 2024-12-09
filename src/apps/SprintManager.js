@@ -102,14 +102,14 @@ const Issue = ({ issue, assignIssue, markAsComplete }) => {
 
 const styles = `
   .app {
+    background: #121212; /* Dark mode background */
+    borderRadius: 15px;
     max-width: 95vw;
-    margin: 20px auto;
+    margin: 35px auto;
     padding: 10px;
     font-size: 12px;
     color: #e0e0e0;
-    background-color: #121212;
-    border: 1px solid #333;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .add-task-btn {
@@ -135,7 +135,7 @@ const styles = `
   }
 
   .section {
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #333;
     border-radius: 5px;
     background-color: #1e1e1e;
@@ -179,6 +179,7 @@ const styles = `
   }
 
   button:hover {
+    transition: background-color 0.3s ease; /* Smooth hover transition */
     background-color: #4b0082; /* Darker purple on hover */
   }
 

@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { MailchimpForm } from "./MailchimpForm";
 import logo from "../assets/img/logo.png";
 import navIcon1 from "../assets/img/nav-icon1.svg";
 
@@ -9,7 +8,13 @@ export const Footer = () => {
     <footer className="footer">
       <Container>
         <Row className="align-items-center">
-          <MailchimpForm />
+          <Col lg={12}>
+            <div className="newsletter-bx wow slideInUp">
+              <Row>
+                <h3>Thank you for taking the time to review my portfolio. <br />If you have any questions or would like to discuss further opportunities, please feel free to get in touch. </h3>
+              </Row>
+            </div>
+          </Col>
           <Col size={12} sm={6}>
             <img style={{ width: '20vw' }} src={logo} alt="Logo" />
           </Col>

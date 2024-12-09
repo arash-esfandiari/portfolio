@@ -96,10 +96,9 @@ function ImageConverter() {
     const styles = {
         container: {
             fontFamily: 'Centra, sans-serif',
-            backgroundColor: '#121212',
             color: '#fff',
             textAlign: 'center',
-            padding: '20px',
+            padding: '35px',
         },
         dropZone: {
             border: '2px dashed #fff',

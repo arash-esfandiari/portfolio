@@ -14,7 +14,7 @@ import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
 import ImageConverter from "../apps/ImageConverter";
 import ImgConverterImg from "../assets/img/extApps/img-converter.webp";
 
-export const RandomApps = () => {
+export const CustomApps = () => {
   const [app, setApp] = useState(null);
   const [currentAppName, setCurrentAppName] = useState("");
   const sliderRef = useRef(null);
@@ -42,7 +42,6 @@ export const RandomApps = () => {
   };
 
   const handleScroll = (e) => {
-    e.preventDefault();
     if (sliderRef.current) {
       sliderRef.current.scrollLeft += e.deltaY * 1.5; // Adjust scroll speed
     }
