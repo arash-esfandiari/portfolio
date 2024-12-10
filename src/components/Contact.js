@@ -39,8 +39,7 @@ export const Contact = () => {
                   <h2>Get In Touch</h2>
                   <form
                     name="contact"
-                    method="POST"
-                    data-netlify="true"
+                    netlify
                     netlify-honeypot="bot-field" // Optional for spam protection
                   >
                     <input type="hidden" name="form-name" value="contact" />
