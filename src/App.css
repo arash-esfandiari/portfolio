@@ -1157,11 +1157,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 #snake-game h1 {
   color: #ffffff;
+  margin-top: 45px;
   margin-bottom: 10px;
 }
-
 #snake-game h2 {
-  color: #00e676;
+  color: #f0f0f0;
   margin: 10px 0;
 }
 
