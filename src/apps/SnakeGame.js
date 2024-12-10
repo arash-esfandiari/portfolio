@@ -26,6 +26,7 @@ function App() {
 
 
     const handleTouchStart = (e) => {
+        e.preventDefault(); // Prevent scroll only on touch start
         touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
     };
 
@@ -46,12 +47,6 @@ function App() {
             if (deltaY < -50 && direction !== "DOWN") nextDirection.current = "UP";
         }
     };
-
-    useEffect(() => {
-        const preventTouchScroll = (e) => e.preventDefault();
-        window.addEventListener("touchmove", preventTouchScroll, { passive: false });
-        return () => window.removeEventListener("touchmove", preventTouchScroll);
-    }, []);
 
     // Fetch leaderboard from localStorage
     useEffect(() => {
