@@ -134,16 +134,16 @@ export const Projects = () => {
       imgUrl: springImg,
     },
     {
+      title: "Hibernate",
+      imgUrl: hibernateImg,
+    },
+    {
       title: "Python",
       imgUrl: pythonImg,
     },
     {
       title: "Django",
       imgUrl: djangoImg,
-    },
-    {
-      title: "Hibernate",
-      imgUrl: hibernateImg,
     },
     {
       title: "Redux",
@@ -162,6 +162,10 @@ export const Projects = () => {
       imgUrl: redisImg,
     },
     {
+      title: "JavaScript",
+      imgUrl: javascriptImg,
+    },
+    {
       title: "React",
       imgUrl: reactImg,
     },
@@ -172,10 +176,6 @@ export const Projects = () => {
     {
       title: "Node.js",
       imgUrl: nodeImg,
-    },
-    {
-      title: "JavaScript",
-      imgUrl: javascriptImg,
     },
     {
       title: "Azure",

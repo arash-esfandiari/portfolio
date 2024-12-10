@@ -974,8 +974,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-radius: 20px;
   color: #f0f0f0;
   min-height: 100vh;
-  padding: 20px;
-  margin: 20px 40px;
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 #mc-game h1 {
@@ -1044,29 +1045,31 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #bdbdbd;
 }
 
-/* Card Grid */
 #mc-game .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
-  gap: 15px;
+  grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
+  grid-template-rows: repeat(4, 1fr); /* Fixed 4 rows */
+  gap: 10px; /* Consistent spacing between cards */
   justify-content: center;
-  margin: 20px auto;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 /* Cards */
 #mc-game .card {
-  width: 100px;
-  height: 100px;
+  width: 100%; /* Take full width of grid cell */
+  aspect-ratio: 1 / 1; /* Keep the card square */
   perspective: 1000px;
   cursor: pointer;
 }
 
 #mc-game .card-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.5s;
+  transition: transform 0.5s ease-in-out;
 }
 
 #mc-game .card.flipped .card-inner {
@@ -1082,7 +1085,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 3em;
   border: 2px solid #00e676;
   border-radius: 10px;
 }
@@ -1094,7 +1097,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 #mc-game .card-front {
   background-color: #212121;
-  color: #ffffff;
+  color: #f0f0f0;
   transform: rotateY(180deg);
 }
 
@@ -1106,14 +1109,195 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 #mc-game .game-screen h2 {
   margin: 10px 0;
 }
+
+/* Restart Button Below Game Board */
+#mc-game .restart-container {
+  margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+  #mc-game .card-grid {
+    gap: 8px; /* Reduce gap on smaller screens */
+  }
+  #mc-game .card-front,
+  #mc-game .card-back {
+    font-size: 3em; /* Reduce card content size */
+  }
+}
+@media (max-width: 480px) {
+  #mc-game .card-grid {
+    gap: 5px; /* Further reduce gap for phones */
+    max-width: 100%; /* Use full width */
+  }
+  #mc-game h1 {
+    font-size: 1.2em;
+  }
+  #mc-game .card-front,
+  #mc-game .card-back {
+    font-size: 3em; /* Smaller font size for very small screens */
+  }
+}
+
+
+/************* SnakeGame.js *************/
+/* General Styling */
+#snake-game{
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  min-height: 100vh;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+#snake-game h1 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+#snake-game h2 {
+  color: #00e676;
+  margin: 10px 0;
+}
+
+#snake-game p {
+  color: #bdbdbd;
+}
+
+#snake-game .start-screen {
+  margin-top: 30px;
+}
+
+#snake-game input {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #333;
+  color: #f0f0f0;
+  border: 2px solid #00e676;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#snake-gameinput:focus {
+  outline: none;
+  border-color: #00c853;
+}
+
+
+/* Button Styling */
+#snake-game .button {
+  background-color: #00e676;
+  color: #121212;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+}
+
+#snake-game .button:hover {
+  background-color: #00c853;
+  transform: scale(1.05);
+}
+
+/* Game Board */
+#snake-game .snake-board {
+  display: inline-block;
+  margin: 20px auto;
+  border: 2px solid #444;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Board Rows */
+#snake-game .snake-row {
+  display: flex;
+}
+
+/* Individual Cells */
+#snake-game .snake-cell {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #444;
+  background-color: #222;
+}
+
+#snake-game .snake-cell.snake {
+  background-color: #00e676; /* Snake Color */
+}
+
+#snake-game .snake-cell.food {
+  background-color: #ff1744; /* Food Color */
+  border-radius: 50%; /* Round shape for food */
+}
+
+/* Restart Button Below Game Board */
+#snake-game .restart-container {
+  margin-top: 20px;
+}
+
+/* Leaderboard */
+#snake-game .leaderboard {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+#snake-game .leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#snake-game .leaderboard li {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #bdbdbd;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 600px) {
-  .card-grid {
-    grid-template-columns: repeat(3, 80px);
-    gap: 10px;
+  #snake-game h1 {
+    font-size: 1.5em;
   }
 
-  .card {
-    width: 80px;
-    height: 80px;
+  #snake-game input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #snake-game button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  #snake-game .snake-cell {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  #snake-game h1 {
+    font-size: 1.2em;
+  }
+
+  #snake-game .snake-cell {
+    width: 18px;
+    height: 18px;
+  }
+
+  #snake-game button {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }

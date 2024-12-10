@@ -116,7 +116,7 @@ function App() {
     }, []);
 
     return (
-        <section id="mc-game">
+        <section className="mc-game" id="mc-game">
             {!gameStarted ? (
                 <div className="start-screen">
                     <h1>🃏 Memory Card Game</h1>
@@ -162,7 +162,7 @@ function App() {
                         ))}
                     </div>
 
-                    <button onClick={restartGame}>Restart</button>
+                    <button className="restart-container" onClick={restartGame}>Restart</button>
 
                     <div className="leaderboard">
                         <h2>🏆 Leaderboard</h2>
