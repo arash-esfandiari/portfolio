@@ -13,6 +13,7 @@ export const Contact = () => {
     message: ''
   };
   const [formDetails, setFormDetails] = useState(formInitialDetails);
+  const [buttonText] = useState('Send');
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -39,11 +40,14 @@ export const Contact = () => {
                   <h2>Get In Touch</h2>
                   <form
                     name="contact"
-                    netlify
-                    netlify-honeypot="bot-field" // Optional for spam protection
+                    method="POST"
+                    data-netlify="true" /* Explicit Netlify attribute */
+                    netlify-honeypot="bot-field" /* Optional honeypot field */
                   >
+                    {/* Hidden Input for Netlify Form Name */}
                     <input type="hidden" name="form-name" value="contact" />
-                    {/* Honeypot Field */}
+
+                    {/* Honeypot Field for Spam Protection */}
                     <div hidden>
                       <label>Don’t fill this out: <input name="bot-field" /></label>
                     </div>
@@ -53,9 +57,7 @@ export const Contact = () => {
                         <input
                           type="text"
                           name="firstName"
-                          value={formDetails.firstName}
                           placeholder="First Name"
-                          onChange={(e) => onFormUpdate('firstName', e.target.value)}
                           required
                         />
                       </Col>
@@ -63,9 +65,7 @@ export const Contact = () => {
                         <input
                           type="text"
                           name="lastName"
-                          value={formDetails.lastName}
                           placeholder="Last Name"
-                          onChange={(e) => onFormUpdate('lastName', e.target.value)}
                           required
                         />
                       </Col>
@@ -73,9 +73,7 @@ export const Contact = () => {
                         <input
                           type="email"
                           name="email"
-                          value={formDetails.email}
                           placeholder="Email Address"
-                          onChange={(e) => onFormUpdate('email', e.target.value)}
                           required
                         />
                       </Col>
@@ -83,25 +81,22 @@ export const Contact = () => {
                         <input
                           type="tel"
                           name="phone"
-                          value={formDetails.phone}
                           placeholder="Phone No."
-                          onChange={(e) => onFormUpdate('phone', e.target.value)}
                         />
                       </Col>
                       <Col size={12} className="px-1">
                         <textarea
                           rows="6"
                           name="message"
-                          value={formDetails.message}
                           placeholder="Message"
-                          onChange={(e) => onFormUpdate('message', e.target.value)}
                           required
                         ></textarea>
-                        <button type="submit"><span>Send</span></button>
+                        <button type="submit"><span>{buttonText}</span></button>
                       </Col>
                     </Row>
                   </form>
-                </div>}
+                </div>
+              }
             </TrackVisibility>
           </Col>
         </Row>
