@@ -26,8 +26,11 @@ function App() {
 
 
     const handleTouchStart = (e) => {
-        e.preventDefault(); // Prevent scroll only on touch start
         touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    };
+
+    const handleTouchMove = (e) => {
+        e.preventDefault(); // Prevent the screen from scrolling during swipes
     };
 
     const handleTouchEnd = (e) => {
@@ -179,7 +182,10 @@ function App() {
     };
 
     return (
-        <div className="snake-game" id="snake-game" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+        <div className="snake-game" id="snake-game"
+            nTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}>
             <h1>🐍 Snake Game</h1>
             {!gameStarted ? (
                 <div className="start-screen ">
