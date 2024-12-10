@@ -54,6 +54,12 @@ function App() {
         }
     };
 
+    useEffect(() => {
+        const preventTouchScroll = (e) => e.preventDefault();
+        window.addEventListener("touchmove", preventTouchScroll, { passive: false });
+        return () => window.removeEventListener("touchmove", preventTouchScroll);
+    }, []);
+
     // Fetch leaderboard from localStorage
     useEffect(() => {
         const storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
