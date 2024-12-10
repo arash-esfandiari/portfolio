@@ -1189,8 +1189,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 
+
 /* Button Styling */
-#snake-game .button {
+#snake-game button {
   background-color: #00e676;
   color: #121212;
   padding: 10px 20px;
@@ -1204,9 +1205,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-left: 20px;
 }
 
-#snake-game .button:hover {
+#snake-game button:hover {
   background-color: #00c853;
   transform: scale(1.05);
+}
+
+#snake-game .input-box {
+  margin: 20px 0;
 }
 
 /* Game Board */

@@ -18,7 +18,9 @@ function App() {
     const [name, setName] = useState("");
     const [gameStarted, setGameStarted] = useState(false);
     const [disabled, setDisabled] = useState(false);
-    const [leaderboard, setLeaderboard] = useState([]);
+    const [leaderboard, setLeaderboard] = useState([
+        { name: "Arash", moves: 12, time: 37 }
+    ]);
     const [moves, setMoves] = useState(0);
     const [timer, setTimer] = useState(0);
     const [timerInterval, setTimerInterval] = useState(null); // Timer Interval
@@ -89,7 +91,6 @@ function App() {
 
     const restartGame = () => {
         stopTimer(); // Stop timer when restarting
-        setName("");
         setGameStarted(false);
     };
 

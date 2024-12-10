@@ -21,6 +21,38 @@ function App() {
     const gameInterval = useRef(null);
     const nextDirection = useRef(direction);
 
+    const touchStart = useRef({ x: 0, y: 0 });
+    const touchEnd = useRef({ x: 0, y: 0 });
+
+
+    const handleTouchStart = (e) => {
+        touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    };
+
+    const handleTouchEnd = (e) => {
+        touchEnd.current = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+        detectSwipe();
+    };
+
+    const detectSwipe = () => {
+        const deltaX = touchEnd.current.x - touchStart.current.x;
+        const deltaY = touchEnd.current.y - touchStart.current.y;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (deltaX > 50 && direction !== "LEFT") nextDirection.current = "RIGHT";
+            if (deltaX < -50 && direction !== "RIGHT") nextDirection.current = "LEFT";
+        } else {
+            if (deltaY > 50 && direction !== "UP") nextDirection.current = "DOWN";
+            if (deltaY < -50 && direction !== "DOWN") nextDirection.current = "UP";
+        }
+    };
+
+    useEffect(() => {
+        const preventTouchScroll = (e) => e.preventDefault();
+        window.addEventListener("touchmove", preventTouchScroll, { passive: false });
+        return () => window.removeEventListener("touchmove", preventTouchScroll);
+    }, []);
+
     // Fetch leaderboard from localStorage
     useEffect(() => {
         const storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
@@ -152,20 +184,20 @@ function App() {
     };
 
     return (
-        <div className="snake-game" id="snake-game">
+        <div className="snake-game" id="snake-game" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
             <h1>🐍 Snake Game</h1>
             {!gameStarted ? (
                 <div className="start-screen ">
-                    <p>Enter your name to begin:</p>
-                    <input
-                        type="text"
-                        placeholder="Your Name"
-                        value={playerName}
-                        onChange={(e) => setPlayerName(e.target.value)}
-                    />
-                    <button className="button" onClick={() => setGameStarted(true)}>
-                        Start Game
-                    </button>
+                    <div className="input-box">
+                        <p>Enter your name to begin:</p>
+                        <input
+                            type="text"
+                            placeholder="Your name"
+                            value={playerName}
+                            onChange={(e) => setPlayerName(e.target.value)}
+                        />
+                        <button onClick={() => setGameStarted(true)}>Start Game</button>
+                    </div>
                     <div className="leaderboard">
                         <h2>🏆 Leaderboard</h2>
                         <ul>
