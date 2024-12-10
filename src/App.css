@@ -1183,7 +1183,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-bottom: 20px;
 }
 
-#snake-gameinput:focus {
+#snake-game input:focus {
   outline: none;
   border-color: #00c853;
 }
