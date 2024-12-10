@@ -26,14 +26,17 @@ function App() {
 
 
     const handleTouchStart = (e) => {
+        if (!gameStarted) return; // Prevent swipes before the game starts
         touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
     };
 
     const handleTouchMove = (e) => {
-        e.preventDefault(); // Prevent the screen from scrolling during swipes
+        if (!gameStarted) return; // Prevent scroll blocking before the game starts
+        e.preventDefault(); // Prevent scrolling during swipes
     };
 
     const handleTouchEnd = (e) => {
+        if (!gameStarted) return; // Prevent swipes before the game starts
         touchEnd.current = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
         detectSwipe();
     };
