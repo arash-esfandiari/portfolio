@@ -14,6 +14,9 @@ import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
 import ImageConverter from "../apps/ImageConverter";
 import ImgConverterImg from "../assets/img/extApps/img-converter.webp";
 
+import MemoryCardGame from "../apps/MemoryCardGame"
+import mcgameImg from "../assets/img/extApps/mc-game.webp";
+
 export const CustomApps = () => {
   const [app, setApp] = useState(null);
   const [currentAppName, setCurrentAppName] = useState("");
@@ -21,6 +24,7 @@ export const CustomApps = () => {
 
   const extApps = [
     { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
+    { name: "Memory Card Game", image: mcgameImg, component: <MemoryCardGame /> },
     { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
     { name: "Python IDE", image: pythonIdeImg, component: <PythonIde /> },
     { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> }
