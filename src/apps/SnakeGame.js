@@ -21,44 +21,7 @@ function App() {
     const gameInterval = useRef(null);
     const nextDirection = useRef(direction);
 
-    const touchStart = useRef({ x: 0, y: 0 });
-    const touchEnd = useRef({ x: 0, y: 0 });
 
-
-    const handleTouchStart = (e) => {
-        if (!gameStarted) return; // Prevent swipes before the game starts
-        touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    };
-
-    const handleTouchMove = (e) => {
-        if (!gameStarted) return; // Prevent scroll blocking before the game starts
-        e.preventDefault(); // Prevent scrolling during swipes
-    };
-
-    const handleTouchEnd = (e) => {
-        if (!gameStarted) return; // Prevent swipes before the game starts
-        touchEnd.current = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
-        detectSwipe();
-    };
-
-    const detectSwipe = () => {
-        const deltaX = touchEnd.current.x - touchStart.current.x;
-        const deltaY = touchEnd.current.y - touchStart.current.y;
-
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            if (deltaX > 50 && direction !== "LEFT") nextDirection.current = "RIGHT";
-            if (deltaX < -50 && direction !== "RIGHT") nextDirection.current = "LEFT";
-        } else {
-            if (deltaY > 50 && direction !== "UP") nextDirection.current = "DOWN";
-            if (deltaY < -50 && direction !== "DOWN") nextDirection.current = "UP";
-        }
-    };
-
-    useEffect(() => {
-        const preventTouchScroll = (e) => e.preventDefault();
-        window.addEventListener("touchmove", preventTouchScroll, { passive: false });
-        return () => window.removeEventListener("touchmove", preventTouchScroll);
-    }, []);
 
     // Fetch leaderboard from localStorage
     useEffect(() => {
@@ -191,10 +154,7 @@ function App() {
     };
 
     return (
-        <div className="snake-game" id="snake-game"
-            nTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}>
+        <div className="snake-game" id="snake-game">
             <h1>🐍 Snake Game</h1>
             {!gameStarted ? (
                 <div className="start-screen ">
