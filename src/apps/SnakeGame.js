@@ -1,83 +1,59 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const BOARD_SIZE = 20; // Grid size
-const SNAKE_START = [
+const BOARD_SIZE = 20;
+const INITIAL_SNAKE = [
     [10, 10],
     [10, 11],
 ];
-const FOOD_START = [5, 5];
-const SPEED = 100; // Movement speed (reduced delay)
+const INITIAL_FOOD = [5, 5];
+const SPEED = 150;
 
 function App() {
-    const [snake, setSnake] = useState(SNAKE_START);
-    const [food, setFood] = useState(FOOD_START);
+    const [snake, setSnake] = useState(INITIAL_SNAKE);
+    const [food, setFood] = useState(INITIAL_FOOD);
     const [direction, setDirection] = useState("UP");
-    const [gameOver, setGameOver] = useState(false);
     const [score, setScore] = useState(0);
+    const [gameOver, setGameOver] = useState(false);
+    const [gameStarted, setGameStarted] = useState(false);
     const [playerName, setPlayerName] = useState("");
     const [leaderboard, setLeaderboard] = useState([]);
-    const [gameStarted, setGameStarted] = useState(false);
 
-    const gameInterval = useRef(null);
     const nextDirection = useRef(direction);
+    const gameInterval = useRef(null);
+    const gameGridRef = useRef(null);
 
-
-
-    // Fetch leaderboard from localStorage
     useEffect(() => {
+        // Load leaderboard from localStorage
         const storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
         setLeaderboard(storedLeaderboard);
     }, []);
 
-    // Start the game loop
     useEffect(() => {
-        if (!gameOver && gameStarted) {
+        if (gameStarted && !gameOver) {
             gameInterval.current = setInterval(moveSnake, SPEED);
         }
         return () => clearInterval(gameInterval.current);
-    }, [snake, gameOver, gameStarted]);
+    }, [snake, gameStarted, gameOver]);
 
-    // Prevent arrow keys from scrolling the page
-    useEffect(() => {
-        const preventScroll = (e) => {
-            if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-                e.preventDefault();
-            }
-        };
-        window.addEventListener("keydown", preventScroll);
-        return () => window.removeEventListener("keydown", preventScroll);
-    }, []);
-
-    // Handle keypress for direction
     useEffect(() => {
         const handleKeyDown = (e) => {
-            switch (e.key) {
-                case "ArrowUp":
-                    if (direction !== "DOWN") nextDirection.current = "UP";
-                    break;
-                case "ArrowDown":
-                    if (direction !== "UP") nextDirection.current = "DOWN";
-                    break;
-                case "ArrowLeft":
-                    if (direction !== "RIGHT") nextDirection.current = "LEFT";
-                    break;
-                case "ArrowRight":
-                    if (direction !== "LEFT") nextDirection.current = "RIGHT";
-                    break;
-                default:
-                    break;
+            if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+                e.preventDefault();
+                if (e.key === "ArrowUp" && direction !== "DOWN") nextDirection.current = "UP";
+                if (e.key === "ArrowDown" && direction !== "UP") nextDirection.current = "DOWN";
+                if (e.key === "ArrowLeft" && direction !== "RIGHT") nextDirection.current = "LEFT";
+                if (e.key === "ArrowRight" && direction !== "LEFT") nextDirection.current = "RIGHT";
             }
         };
-        document.addEventListener("keydown", handleKeyDown);
-        return () => document.removeEventListener("keydown", handleKeyDown);
+        window.addEventListener("keydown", handleKeyDown, { passive: false });
+        return () => window.removeEventListener("keydown", handleKeyDown);
     }, [direction]);
 
     const moveSnake = () => {
         const newSnake = [...snake];
         const head = newSnake[0];
-
-        // Update head position based on direction
         let newHead;
+
         switch (nextDirection.current) {
             case "UP":
                 newHead = [head[0] - 1, head[1]];
@@ -95,23 +71,38 @@ function App() {
                 return;
         }
 
-        // Add new head and check collisions
-        newSnake.unshift(newHead);
-        if (checkCollision(newHead)) {
-            endGame();
+        if (
+            newHead[0] < 0 ||
+            newHead[1] < 0 ||
+            newHead[0] >= BOARD_SIZE ||
+            newHead[1] >= BOARD_SIZE ||
+            snake.some((part) => part[0] === newHead[0] && part[1] === newHead[1])
+        ) {
+            handleGameOver();
             return;
         }
 
-        // Check if snake eats food
+        newSnake.unshift(newHead);
         if (newHead[0] === food[0] && newHead[1] === food[1]) {
             setFood(generateFood());
-            setScore((prev) => prev + 10);
+            setScore(score + 10);
         } else {
             newSnake.pop();
         }
 
         setSnake(newSnake);
         setDirection(nextDirection.current);
+    };
+
+    const handleGameOver = () => {
+        setGameOver(true);
+        clearInterval(gameInterval.current);
+
+        const newEntry = { name: playerName, score };
+        const updatedLeaderboard = [...leaderboard, newEntry].sort((a, b) => b.score - a.score);
+
+        setLeaderboard(updatedLeaderboard);
+        localStorage.setItem("leaderboard", JSON.stringify(updatedLeaderboard));
     };
 
     const generateFood = () => {
@@ -125,39 +116,20 @@ function App() {
         return newFood;
     };
 
-    const checkCollision = (head) => {
-        return (
-            head[0] < 0 ||
-            head[1] < 0 ||
-            head[0] >= BOARD_SIZE ||
-            head[1] >= BOARD_SIZE ||
-            snake.some((part) => part[0] === head[0] && part[1] === head[1])
-        );
-    };
-
-    const endGame = () => {
-        clearInterval(gameInterval.current);
-        setGameOver(true);
-        const newEntry = { name: playerName, score };
-        const updatedLeaderboard = [...leaderboard, newEntry].sort((a, b) => b.score - a.score);
-        setLeaderboard(updatedLeaderboard);
-        localStorage.setItem("leaderboard", JSON.stringify(updatedLeaderboard));
-    };
-
     const resetGame = () => {
-        setSnake(SNAKE_START);
-        setFood(FOOD_START);
+        setSnake(INITIAL_SNAKE);
+        setFood(INITIAL_FOOD);
+        setScore(0);
         setDirection("UP");
         setGameOver(false);
-        setScore(0);
         setGameStarted(false);
     };
 
     return (
-        <div className="snake-game" id="snake-game">
+        <div id="snake-game">
             <h1>🐍 Snake Game</h1>
             {!gameStarted ? (
-                <div className="start-screen ">
+                <div className="start-screen">
                     <div className="input-box">
                         <p>Enter your name to begin:</p>
                         <input
@@ -166,7 +138,13 @@ function App() {
                             value={playerName}
                             onChange={(e) => setPlayerName(e.target.value)}
                         />
-                        <button onClick={() => setGameStarted(true)}>Start Game</button>
+                        <button
+                            onClick={() => {
+                                if (playerName.trim()) setGameStarted(true);
+                            }}
+                        >
+                            Start Game
+                        </button>
                     </div>
                     <div className="leaderboard">
                         <h2>🏆 Leaderboard</h2>
@@ -183,19 +161,16 @@ function App() {
                 <>
                     <h2>Score: {score}</h2>
                     {gameOver && <h2 style={{ color: "red" }}>Game Over!</h2>}
-                    <div className="snake-board">
+                    <div ref={gameGridRef} className="snake-board">
                         {Array.from({ length: BOARD_SIZE }).map((_, row) => (
-                            <div className="snake-row" key={row}>
+                            <div key={row} className="snake-row">
                                 {Array.from({ length: BOARD_SIZE }).map((_, col) => {
                                     const isSnake = snake.some((part) => part[0] === row && part[1] === col);
                                     const isFood = food[0] === row && food[1] === col;
                                     return (
                                         <div
-                                            className="snake-cell"
                                             key={col}
-                                            style={{
-                                                backgroundColor: isSnake ? "green" : isFood ? "red" : "#333",
-                                            }}
+                                            className={`snake-cell ${isSnake ? "snake" : ""} ${isFood ? "food" : ""}`}
                                         ></div>
                                     );
                                 })}
@@ -204,9 +179,7 @@ function App() {
                     </div>
                     {gameOver && (
                         <div className="restart-container">
-                            <button className="button" onClick={resetGame}>
-                                Restart Game
-                            </button>
+                            <button onClick={resetGame}>Restart Game</button>
                         </div>
                     )}
                     <div className="leaderboard">
@@ -224,6 +197,5 @@ function App() {
         </div>
     );
 }
-
 
 export default App;

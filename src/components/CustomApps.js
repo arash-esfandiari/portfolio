@@ -61,8 +61,8 @@ export const CustomApps = () => {
         <div className="row">
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
-              <h2>Try Out My Handy Custom Apps</h2>
-              <p>Responsive, practical tools created to showcase my coding skills and creativity.</p>
+              <h2>Welcome to my App Store</h2>
+              <p>Responsive, practical tools and games created to showcase my coding skills and creativity.</p>
               <div
                 className="horizontal-slider"
                 ref={sliderRef}

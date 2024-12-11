@@ -1005,7 +1005,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 18px;
   background-color: #333;
   color: #f0f0f0;
-  border: 2px solid #00e676;
+  border: 2px solid #198752;
   border-radius: 5px;
   margin-bottom: 20px;
 }
@@ -1018,7 +1018,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 #mc-game button {
   padding: 10px 20px;
   font-size: 18px;
-  background-color: #00e676;
+  background-color: #198752;
   color: #121212;
   border: none;
   border-radius: 5px;
@@ -1178,7 +1178,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 18px;
   background-color: #333;
   color: #f0f0f0;
-  border: 2px solid #00e676;
+  border: 2px solid #198752;;
   border-radius: 5px;
   margin-bottom: 20px;
 }
@@ -1188,11 +1188,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-color: #00c853;
 }
 
-
-
 /* Button Styling */
 #snake-game button {
-  background-color: #00e676;
+  background-color: #198752;
   color: #121212;
   padding: 10px 20px;
   font-size: 16px;
@@ -1237,12 +1235,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 #snake-game .snake-cell.snake {
-  background-color: #00e676; /* Snake Color */
+  background-color: #167648; /* Snake Color */
 }
 
 #snake-game .snake-cell.food {
   background-color: #ff1744; /* Food Color */
-  border-radius: 50%; /* Round shape for food */
 }
 
 /* Restart Button Below Game Board */
