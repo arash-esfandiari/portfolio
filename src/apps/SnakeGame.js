@@ -15,18 +15,12 @@ function App() {
     const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [gameStarted, setGameStarted] = useState(false);
-    const [playerName, setPlayerName] = useState("");
-    const [leaderboard, setLeaderboard] = useState([]);
 
     const nextDirection = useRef(direction);
     const gameInterval = useRef(null);
-    const gameGridRef = useRef(null);
-
-    useEffect(() => {
-        // Load leaderboard from localStorage
-        const storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
-        setLeaderboard(storedLeaderboard);
-    }, []);
+    const gameGridRef = useRef(null); // Reference to the game grid
+    const touchStart = useRef({ x: 0, y: 0 });
+    const touchEnd = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
         if (gameStarted && !gameOver) {
@@ -35,6 +29,7 @@ function App() {
         return () => clearInterval(gameInterval.current);
     }, [snake, gameStarted, gameOver]);
 
+    // Prevent scrolling for arrow keys
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
@@ -47,6 +42,45 @@ function App() {
         };
         window.addEventListener("keydown", handleKeyDown, { passive: false });
         return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [direction]);
+
+    // Handle swipe gestures and prevent scroll within grid
+    useEffect(() => {
+        const handleTouchStart = (e) => {
+            if (gameGridRef.current && gameGridRef.current.contains(e.target)) {
+                e.preventDefault(); // Prevent scroll
+            }
+            touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        };
+
+        const handleTouchEnd = (e) => {
+            if (gameGridRef.current && gameGridRef.current.contains(e.target)) {
+                e.preventDefault(); // Prevent scroll
+            }
+            touchEnd.current = { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+            handleSwipe();
+        };
+
+        const handleSwipe = () => {
+            const deltaX = touchEnd.current.x - touchStart.current.x;
+            const deltaY = touchEnd.current.y - touchStart.current.y;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX > 0 && direction !== "LEFT") nextDirection.current = "RIGHT";
+                if (deltaX < 0 && direction !== "RIGHT") nextDirection.current = "LEFT";
+            } else {
+                if (deltaY > 0 && direction !== "UP") nextDirection.current = "DOWN";
+                if (deltaY < 0 && direction !== "DOWN") nextDirection.current = "UP";
+            }
+        };
+
+        document.addEventListener("touchstart", handleTouchStart, { passive: false });
+        document.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+        return () => {
+            document.removeEventListener("touchstart", handleTouchStart);
+            document.removeEventListener("touchend", handleTouchEnd);
+        };
     }, [direction]);
 
     const moveSnake = () => {
@@ -78,7 +112,8 @@ function App() {
             newHead[1] >= BOARD_SIZE ||
             snake.some((part) => part[0] === newHead[0] && part[1] === newHead[1])
         ) {
-            handleGameOver();
+            setGameOver(true);
+            clearInterval(gameInterval.current);
             return;
         }
 
@@ -92,17 +127,6 @@ function App() {
 
         setSnake(newSnake);
         setDirection(nextDirection.current);
-    };
-
-    const handleGameOver = () => {
-        setGameOver(true);
-        clearInterval(gameInterval.current);
-
-        const newEntry = { name: playerName, score };
-        const updatedLeaderboard = [...leaderboard, newEntry].sort((a, b) => b.score - a.score);
-
-        setLeaderboard(updatedLeaderboard);
-        localStorage.setItem("leaderboard", JSON.stringify(updatedLeaderboard));
     };
 
     const generateFood = () => {
@@ -130,32 +154,7 @@ function App() {
             <h1>🐍 Snake Game</h1>
             {!gameStarted ? (
                 <div className="start-screen">
-                    <div className="input-box">
-                        <p>Enter your name to begin:</p>
-                        <input
-                            type="text"
-                            placeholder="Your name"
-                            value={playerName}
-                            onChange={(e) => setPlayerName(e.target.value)}
-                        />
-                        <button
-                            onClick={() => {
-                                if (playerName.trim()) setGameStarted(true);
-                            }}
-                        >
-                            Start Game
-                        </button>
-                    </div>
-                    <div className="leaderboard">
-                        <h2>🏆 Leaderboard</h2>
-                        <ul>
-                            {leaderboard.map((entry, index) => (
-                                <li key={index}>
-                                    {index + 1}. {entry.name} - {entry.score} points
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    <button onClick={() => setGameStarted(true)}>Start Game</button>
                 </div>
             ) : (
                 <>
@@ -182,16 +181,6 @@ function App() {
                             <button onClick={resetGame}>Restart Game</button>
                         </div>
                     )}
-                    <div className="leaderboard">
-                        <h2>🏆 Leaderboard</h2>
-                        <ul>
-                            {leaderboard.map((entry, index) => (
-                                <li key={index}>
-                                    {index + 1}. {entry.name} - {entry.score} points
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
                 </>
             )}
         </div>
