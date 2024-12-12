@@ -353,7 +353,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .horizontal-slider .item {
   flex: 0 0 auto;
   text-align: center;
-  padding: 30px;
+  padding: 20px;
   transition: transform 0.3s ease-in-out;
   position: relative; /* Ensure z-index works */
   z-index: 1; /* Keep hover items above others */
@@ -368,7 +368,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 240px; /* Larger width for desktop */
   height: 240px; /* Larger height for desktop */
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 50px;
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 

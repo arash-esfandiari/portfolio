@@ -12,7 +12,7 @@ import SprintManager from "../apps/SprintManager";
 import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
 
 import ImageConverter from "../apps/ImageConverter";
-import ImgConverterImg from "../assets/img/extApps/img-converter.webp";
+import ImgConverterImg from "../assets/img/appIcons/img-converter.webp";
 
 import MemoryCardGame from "../apps/MemoryCardGame"
 import McGameImg from "../assets/img/extApps/mc-game.webp";
@@ -31,7 +31,7 @@ export const CustomApps = () => {
   const sliderRef = useRef(null);
 
   const extApps = [
-    { name: "Image Converter", image: AppstoreImg, component: <ImageConverter /> },
+    { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
     { name: "The Snake Game", image: GamesIcon, component: <SnakeGame /> },
     { name: "Memory Card Game", image: McGameImg, component: <MemoryCardGame /> },
     { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
