@@ -365,9 +365,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .horizontal-slider .item img {
-  width: 200px; /* Larger width for desktop */
-  height: 200px; /* Larger height for desktop */
-  border-radius: 50px;
+  width: 150px; /* Larger width for desktop */
+  height: 150px; /* Larger height for desktop */
+  border-radius: 25px;
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
@@ -402,8 +402,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
   .horizontal-slider .item img {
     padding: 5px;
-    width: 280px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
   }
 }
 
@@ -418,7 +418,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .horizontal-slider .item img {
-    width: 240px;
+    width: 150px;
     height: 150px;
   }
 }
@@ -431,12 +431,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
   .horizontal-slider .item {
     min-width: 180px; /* Smallest item size for phones */
+    padding: 5px;
     flex-shrink: 0; /* Prevent items from shrinking smaller than their size */
   }
 
   .horizontal-slider .item img {
-    width: 200px;
-    height: 200px;
+    width: 125px;
+    height: 125px;
+    border-radius: 5px;
   }
 }
 .background-image-left {
