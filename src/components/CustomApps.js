@@ -20,14 +20,19 @@ import McGameImg from "../assets/img/extApps/mc-game.webp";
 import SnakeGame from "../apps/SnakeGame"
 import SnakeGamegImg from "../assets/img/extApps/snake-game.webp";
 
+import AppstoreImg from '../assets/img/appIcons/apps.webp'
+
+import GamesIcon from '../assets/img/appIcons/games-icon.png'
+
+
 export const CustomApps = () => {
   const [app, setApp] = useState(null);
   const [currentAppName, setCurrentAppName] = useState("");
   const sliderRef = useRef(null);
 
   const extApps = [
-    { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
-    { name: "The Snake Game", image: SnakeGamegImg, component: <SnakeGame /> },
+    { name: "Image Converter", image: AppstoreImg, component: <ImageConverter /> },
+    { name: "The Snake Game", image: GamesIcon, component: <SnakeGame /> },
     { name: "Memory Card Game", image: McGameImg, component: <MemoryCardGame /> },
     { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
     { name: "Python IDE", image: pythonIdeImg, component: <PythonIde /> },
