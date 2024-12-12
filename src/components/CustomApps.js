@@ -1,41 +1,42 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import colorSharp from "../assets/img/color-sharp.png";
 
 // App and respective image imports
 import GraphingCalculator from "../apps/GraphingCalc";
-import grapgingCalcImg from "../assets/img/extApps/graphing-calc.webp";
+import grapgingCalcImg from "../assets/img/appIcons/grapging-calc2.webp";
 
 import PythonIde from "../apps/PythonIde";
-import pythonIdeImg from "../assets/img/extApps/python-ide.webp";
+import pythonIdeImg from "../assets/img/appIcons/python-ide.webp";
 
 import SprintManager from "../apps/SprintManager";
-import sprintManagerImg from "../assets/img/extApps/sprint-manager.webp";
+import sprintManagerImg from "../assets/img/appIcons/sprint-manager.webp";
 
 import ImageConverter from "../apps/ImageConverter";
 import ImgConverterImg from "../assets/img/appIcons/img-converter.webp";
 
 import MemoryCardGame from "../apps/MemoryCardGame"
-import McGameImg from "../assets/img/extApps/mc-game.webp";
+import McGameImg from "../assets/img/appIcons/mc-game1.webp";
 
 import SnakeGame from "../apps/SnakeGame"
-import SnakeGamegImg from "../assets/img/extApps/snake-game.webp";
+import SnakeGamegImg from "../assets/img/appIcons/snake-game2.webp";
 
 import AppstoreImg from '../assets/img/appIcons/apps.webp'
-
 import GamesIcon from '../assets/img/appIcons/games-icon.png'
+
 
 
 export const CustomApps = () => {
   const [app, setApp] = useState(null);
   const [currentAppName, setCurrentAppName] = useState("");
   const sliderRef = useRef(null);
+  const appContainerRef = useRef(null); // Ref for the app container
 
-  const extApps = [
+  const customApps = [
     { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
-    { name: "The Snake Game", image: GamesIcon, component: <SnakeGame /> },
+    { name: "The Snake Game", image: SnakeGamegImg, component: <SnakeGame /> },
+    { name: "Python IDE", image: pythonIdeImg, component: <PythonIde /> },
     { name: "Memory Card Game", image: McGameImg, component: <MemoryCardGame /> },
     { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
-    { name: "Python IDE", image: pythonIdeImg, component: <PythonIde /> },
     { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> }
   ];
 
@@ -60,8 +61,16 @@ export const CustomApps = () => {
     }
   };
 
+  // Focus or scroll into the app container when an app is opened
+  useEffect(() => {
+    if (app && appContainerRef.current) {
+      appContainerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      appContainerRef.current.focus();
+    }
+  }, [app]);
+
   return (
-    <section className="skill" id="skills">
+    <section className="skill" id="apps">
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -73,7 +82,7 @@ export const CustomApps = () => {
                 ref={sliderRef}
                 onWheel={handleScroll} // Enable horizontal scrolling with trackpad or mouse wheel
               >
-                {extApps.map((appItem, index) => (
+                {customApps.map((appItem, index) => (
                   <div
                     className="item"
                     key={index}
@@ -90,20 +99,10 @@ export const CustomApps = () => {
       </div>
       <img className="background-image-left" src={colorSharp} alt="Background" />
       {app && (
-        <div style={{ position: "relative", marginTop: "20px", padding: "10px", borderRadius: "10px", boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)" }}>
+        <div ref={appContainerRef} tabIndex="-1" /* Allows focus */
+          className="app-container">
           <button
-            style={{
-              position: "absolute",
-              top: "10px",
-              left: "10px",
-              backgroundColor: "transparent",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              padding: "5px 10px",
-              zIndex: 1000,
-            }}
+            className="close-button"
             onClick={handleCloseApp}
           >
             X

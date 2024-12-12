@@ -300,7 +300,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-right: 0.08em solid #666;
 }
 
-/************ Skills Css ************/
+/************ Custom Apps .js ************/
 .skill {
   padding: 0 0 50px 0;
   position: relative;
@@ -360,20 +360,33 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .horizontal-slider .item:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
   z-index: 10; /* Ensure the item appears above others */
 }
 
 .horizontal-slider .item img {
-  width: 240px; /* Larger width for desktop */
-  height: 240px; /* Larger height for desktop */
-  object-fit: cover;
+  width: 200px; /* Larger width for desktop */
+  height: 200px; /* Larger height for desktop */
   border-radius: 50px;
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.horizontal-slider .item img:hover {
-  box-shadow: 0 0 25px rgb(87, 86, 86); /* Increased glow effect */
+#apps .app-container {
+  position: relative;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#apps .close-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  z-index: 1000;
 }
 
 /* Responsive styles */
@@ -1062,6 +1075,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   aspect-ratio: 1 / 1; /* Keep the card square */
   perspective: 1000px;
   cursor: pointer;
+  background: transparent;
 }
 
 #mc-game .card-inner {
@@ -1086,18 +1100,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   justify-content: center;
   align-items: center;
   font-size: 3em;
-  border: 2px solid #00e676;
+  border: 1px solid #5aaa83;
   border-radius: 10px;
 }
 
 #mc-game .card-back {
-  background-color: #333;
+  background-color: #023c23;
   color: #00e676;
 }
 
 #mc-game .card-front {
-  background-color: #212121;
-  color: #f0f0f0;
+  background-color: #131212;
   transform: rotateY(180deg);
 }
 
