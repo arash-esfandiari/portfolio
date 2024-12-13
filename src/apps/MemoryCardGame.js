@@ -18,9 +18,7 @@ function App() {
     const [name, setName] = useState("");
     const [gameStarted, setGameStarted] = useState(false);
     const [disabled, setDisabled] = useState(false);
-    const [leaderboard, setLeaderboard] = useState([
-        { name: "Arash", moves: 12, time: 37 }
-    ]);
+    const [leaderboard, setLeaderboard] = useState([{ name: "Arash", moves: 12, time: 37 }]);
     const [moves, setMoves] = useState(0);
     const [timer, setTimer] = useState(0);
     const [timerInterval, setTimerInterval] = useState(null); // Timer Interval
@@ -98,10 +96,10 @@ function App() {
         stopTimer(); // Stop the timer
         const playerScore = { name, moves, time: timer };
         const updatedLeaderboard = [...leaderboard, playerScore].sort(
-            (a, b) => a.time - b.time || a.moves - b.moves
+            (a, b) => a.moves - b.moves || a.time - b.time
         );
         setLeaderboard(updatedLeaderboard);
-        localStorage.setItem("leaderboard", JSON.stringify(updatedLeaderboard));
+        localStorage.setItem("mc-leaderboard", JSON.stringify(updatedLeaderboard));
     };
 
     useEffect(() => {
@@ -112,7 +110,7 @@ function App() {
     }, [matchedCards]);
 
     useEffect(() => {
-        const storedLeaderboard = JSON.parse(localStorage.getItem("leaderboard"));
+        const storedLeaderboard = JSON.parse(localStorage.getItem("mc-leaderboard"));
         if (storedLeaderboard) setLeaderboard(storedLeaderboard);
     }, []);
 
@@ -130,16 +128,6 @@ function App() {
                             onChange={(e) => setName(e.target.value)}
                         />
                         <button onClick={startGame}>Start Game</button>
-                    </div>
-                    <div className="leaderboard">
-                        <h2>🏆 Leaderboard</h2>
-                        <ul>
-                            {leaderboard.map((player, index) => (
-                                <li key={index}>
-                                    {index + 1}. {player.name} - {player.time}s, {player.moves} moves
-                                </li>
-                            ))}
-                        </ul>
                     </div>
                 </div>
             ) : (
@@ -164,19 +152,18 @@ function App() {
                     </div>
 
                     <button className="restart-container" onClick={restartGame}>Restart</button>
-
-                    <div className="leaderboard">
-                        <h2>🏆 Leaderboard</h2>
-                        <ul>
-                            {leaderboard.map((player, index) => (
-                                <li key={index}>
-                                    {index + 1}. {player.name} - {player.time}s, {player.moves} moves
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
                 </div>
             )}
+            <div className="leaderboard">
+                <h2>🏆 Leaderboard</h2>
+                <ul>
+                    {leaderboard.map((player, index) => (
+                        <li key={index}>
+                            {index + 1}. {player.name} - {player.time}s, {player.moves} moves
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </section>
     );
 }

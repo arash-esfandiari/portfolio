@@ -6,16 +6,17 @@ const INITIAL_SNAKE = [
     [10, 11],
 ];
 const INITIAL_FOOD = [5, 5];
-const SPEED = 150;
+const SPEED = 100;
 
 function App() {
     const [snake, setSnake] = useState(INITIAL_SNAKE);
     const [food, setFood] = useState(INITIAL_FOOD);
-    const [direction, setDirection] = useState("UP");
+    const [direction, setDirection] = useState("LEFT");
     const [score, setScore] = useState(0);
+    const [name, setName] = useState("");
     const [gameOver, setGameOver] = useState(false);
     const [gameStarted, setGameStarted] = useState(false);
-
+    const [leaderboard, setLeaderboard] = useState([{ name: "Arash", score: 200 }]);
     const nextDirection = useRef(direction);
     const gameInterval = useRef(null);
     const gameGridRef = useRef(null); // Reference to the game grid
@@ -83,6 +84,22 @@ function App() {
         };
     }, [direction]);
 
+
+    useEffect(() => {
+        const storedLeaderboard = JSON.parse(localStorage.getItem("snake-leaderboard"));
+        if (storedLeaderboard) setLeaderboard(storedLeaderboard);
+    }, []);
+
+
+    const updateLeaderboard = () => {
+        const playerScore = { name: name || "Anonymous", score };
+        const updatedLeaderboard = [...leaderboard, playerScore]
+            .sort((a, b) => b.score - a.score) // Sort by score in descending order
+            .slice(0, 5); // Keep only the top 5 results
+        setLeaderboard(updatedLeaderboard);
+        localStorage.setItem("snake-leaderboard", JSON.stringify(updatedLeaderboard));
+    };
+
     const moveSnake = () => {
         const newSnake = [...snake];
         const head = newSnake[0];
@@ -114,6 +131,8 @@ function App() {
         ) {
             setGameOver(true);
             clearInterval(gameInterval.current);
+            // Update leaderboard
+            updateLeaderboard(score, name);
             return;
         }
 
@@ -131,12 +150,19 @@ function App() {
 
     const generateFood = () => {
         let newFood;
+        const isFoodOnSnake = (foodPosition) => {
+            return snake.some(
+                (part) => part[0] === foodPosition[0] && part[1] === foodPosition[1]
+            );
+        };
+
         do {
             newFood = [
                 Math.floor(Math.random() * BOARD_SIZE),
                 Math.floor(Math.random() * BOARD_SIZE),
             ];
-        } while (snake.some((part) => part[0] === newFood[0] && part[1] === newFood[1]));
+        } while (isFoodOnSnake(newFood));
+
         return newFood;
     };
 
@@ -144,7 +170,7 @@ function App() {
         setSnake(INITIAL_SNAKE);
         setFood(INITIAL_FOOD);
         setScore(0);
-        setDirection("UP");
+        nextDirection.current = "LEFT";
         setGameOver(false);
         setGameStarted(false);
     };
@@ -154,7 +180,16 @@ function App() {
             <h1>🐍 Snake Game</h1>
             {!gameStarted ? (
                 <div className="start-screen">
-                    <button onClick={() => setGameStarted(true)}>Start Game</button>
+                    <div className="input-box">
+                        <p>Enter your name to begin:</p>
+                        <input
+                            type="text"
+                            placeholder="Your name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <button onClick={() => setGameStarted(true)}>Start Game</button>
+                    </div>
                 </div>
             ) : (
                 <>
@@ -183,6 +218,16 @@ function App() {
                     )}
                 </>
             )}
+            <div className="leaderboard">
+                <h2>🏆 Leaderboard</h2>
+                <ul>
+                    {leaderboard.map((entry, index) => (
+                        <li key={index}>
+                            {entry.name}: {entry.score} points
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
