@@ -1,0 +1,173 @@
+/************* Memory Card Game.js *************/
+/* General Styling for Dark Mode */
+#mc-game {
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    border-radius: 20px;
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#mc-game h1 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+#mc-game h2 {
+    color: #f0f0f0;
+}
+
+#mc-game p {
+    color: #bdbdbd;
+}
+
+#mc-game .start-screen {
+    margin-top: 50px;
+}
+
+#mc-game .input-box {
+    margin: 20px 0;
+}
+
+#mc-game input {
+    padding: 10px;
+    font-size: 18px;
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px solid #198752;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#mc-game input:focus {
+    outline: none;
+    border-color: #00c853;
+}
+
+#mc-game button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #198752;
+    color: #121212;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+}
+
+#mc-game button:hover {
+    background-color: #00c853;
+    transform: scale(1.05);
+}
+
+#mc-game .leaderboard ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#mc-game .leaderboard li {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #bdbdbd;
+}
+
+#mc-game .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Fixed 4 columns */
+    grid-template-rows: repeat(4, 1fr); /* Fixed 4 rows */
+    gap: 10px; /* Consistent spacing between cards */
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Cards */
+#mc-game .card {
+    width: 100%; /* Take full width of grid cell */
+    aspect-ratio: 1 / 1; /* Keep the card square */
+    perspective: 1000px;
+    cursor: pointer;
+    background: transparent;
+}
+
+#mc-game .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+}
+
+#mc-game .card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+#mc-game .card-front,
+#mc-game .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    border: 1px solid #5aaa83;
+    border-radius: 10px;
+}
+
+#mc-game .card-back {
+    background-color: #343d3f;
+    color: #00e676;
+}
+
+#mc-game .card-front {
+    background-color: #131212;
+    transform: rotateY(180deg);
+}
+
+/* Game Screen */
+#mc-game .game-screen {
+    margin-top: 20px;
+}
+
+#mc-game .game-screen h2 {
+    margin: 10px 0;
+}
+
+/* Restart Button Below Game Board */
+#mc-game .restart-container {
+    margin-top: 20px;
+}
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    #mc-game .card-grid {
+        gap: 8px; /* Reduce gap on smaller screens */
+    }
+    #mc-game .card-front,
+    #mc-game .card-back {
+        font-size: 3em; /* Reduce card content size */
+    }
+}
+@media (max-width: 480px) {
+    #mc-game .card-grid {
+        gap: 5px; /* Further reduce gap for phones */
+        max-width: 100%; /* Use full width */
+    }
+    #mc-game h1 {
+        font-size: 1.2em;
+    }
+    #mc-game .card-front,
+    #mc-game .card-back {
+        font-size: 3em; /* Smaller font size for very small screens */
+    }
+}

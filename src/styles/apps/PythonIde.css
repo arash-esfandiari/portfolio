@@ -1,0 +1,97 @@
+/*********** PythonIDE.js *************/
+/* IDE Container */
+#ide .ide-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    padding: 20px;
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+}
+
+/* Title Styling */
+#ide .title {
+    text-align: center;
+    color: #e0e0e0;
+}
+
+/* Button Styling */
+#ide .button {
+    max-width: 100px; /* Limit maximum button width */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #6a0dad;
+    color: #fff;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#ide .button:hover {
+    background-color: #4b0082;
+}
+
+/* Split Layout for Large Screens */
+#ide .split {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 100px);
+    gap: 10px;
+}
+
+/* Panel Styling */
+#ide .panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#ide .panel-container {
+    flex: 1;
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 60vh;
+}
+
+/* Output Text */
+#ide .output-pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+
+/* Split Gutter Styling */
+#ide .gutter {
+    background-color: #eee;
+    cursor: col-resize;
+    width: 5px;
+    transition: background-color 0.2s ease;
+}
+
+#ide .gutter:hover {
+    background-color: #ccc;
+}
+
+/* Stacked Layout for Small Screens */
+@media (max-width: 768px) {
+    #ide .stacked {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #ide .panel {
+        width: 100%;
+    }
+
+    #ide .panel-container {
+        max-height: 50vh;
+    }
+}

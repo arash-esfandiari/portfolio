@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "../styles/apps/SnakeGame.css"
 
 const BOARD_SIZE = 20;
 const INITIAL_SNAKE = [
@@ -8,7 +9,7 @@ const INITIAL_SNAKE = [
 const INITIAL_FOOD = [5, 5];
 const SPEED = 100;
 
-function App() {
+function SnakeGame() {
     const [snake, setSnake] = useState(INITIAL_SNAKE);
     const [food, setFood] = useState(INITIAL_FOOD);
     const [direction, setDirection] = useState("LEFT");
@@ -16,7 +17,7 @@ function App() {
     const [name, setName] = useState("");
     const [gameOver, setGameOver] = useState(false);
     const [gameStarted, setGameStarted] = useState(false);
-    const [leaderboard, setLeaderboard] = useState([{ name: "Arash", score: 200 }]);
+    const [leaderboard, setLeaderboard] = useState([{ name: "Arash", score: 200 }, { name: "Ayman", score: 590 }]);
     const nextDirection = useRef(direction);
     const gameInterval = useRef(null);
     const gameGridRef = useRef(null); // Reference to the game grid
@@ -177,7 +178,7 @@ function App() {
 
     return (
         <div id="snake-game">
-            <h1>🐍 Snake Game</h1>
+            <h1>The 🐍 Game</h1>
             {!gameStarted ? (
                 <div className="start-screen">
                     <div className="input-box">
@@ -232,4 +233,4 @@ function App() {
     );
 }
 
-export default App;
+export default SnakeGame;

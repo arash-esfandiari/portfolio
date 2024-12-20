@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import "../styles/apps/GraphingCalc.css"
 
 const GraphingCalculator = () => {
     const canvasRef = useRef(null);

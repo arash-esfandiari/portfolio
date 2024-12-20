@@ -1,0 +1,261 @@
+/************ Custom Apps .js ************/
+#app-store .container {
+    padding: 0 0 50px 0;
+    position: relative;
+}
+#app-store .appstore-bx {
+    background: #182123;
+    border-radius: 64px;
+    text-align: center;
+    padding: 60px 50px;
+    margin-top: -60px;
+}
+#app-store .container h2 {
+    font-size: 45px;
+    font-weight: 700;
+}
+#app-store .container h5 {
+    margin: 30px;
+}
+#app-store .container p {
+    color: #b8b8b8;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    margin: 14px 0 75px 0;
+}
+#app-store .horizontal-slider {
+    display: flex;
+    gap: 10px; /* Gap between items */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    overflow-y: hidden; /* Ensure no clipping for pop-out effects */
+    padding: 20px; /* Add space to the left of the first item */
+    scroll-behavior: smooth;
+    position: relative; /* Allow child elements to overflow */
+    box-sizing: border-box; /* Prevent padding from increasing width */
+}
+
+#app-store .horizontal-slider::-webkit-scrollbar {
+    height: 8px; /* Adjust scrollbar height */
+}
+
+#app-store .horizontal-slider::-webkit-scrollbar-thumb {
+    background: #353535;
+    border-radius: 4px;
+}
+
+#app-store .horizontal-slider::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+#app-store .horizontal-slider .item {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    position: relative; /* Ensure z-index works */
+    z-index: 1; /* Keep hover items above others */
+}
+
+#app-store .horizontal-slider .item:hover {
+    transform: scale(1.15);
+    z-index: 10; /* Ensure the item appears above others */
+}
+
+#app-store .horizontal-slider .item img {
+    width: 150px; /* Larger width for desktop */
+    height: 150px; /* Larger height for desktop */
+    border-radius: 25px;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#app-store .app-container {
+    margin: 15px;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+
+    overflow: hidden; /* Prevent content overflow */
+}
+
+/* Slim macOS titlebar container */
+#app-store .macos-titlebar {
+    width: 100%; /* Expand across full width of app container */
+    height: 25px; /* Slim height similar to macOS title bar */
+    background-color: #182123; /* Light gray color for the title bar */
+    display: flex;
+    align-items: center; /* Vertically center the buttons */
+    padding-left: 10px; /* Small padding for left alignment */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+/* macOS Buttons Container inside the titlebar */
+#app-store .macos-buttons {
+    display: flex;
+    gap: 8px; /* Space between buttons */
+}
+
+/* macOS Buttons General Styles */
+#app-store .macos-button {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%; /* Circular buttons */
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hide all symbols (spans) by default */
+#app-store .macos-button span {
+    opacity: 0; /* Invisible initially */
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Show all symbols when any button is hovered */
+#app-store .macos-buttons:hover .macos-button span {
+    opacity: 1; /* Make all symbols visible */
+}
+
+/* macOS Close Button */
+#app-store .macos-close-button {
+    background-color: #ff5f57;
+}
+
+#app-store .macos-close-button:hover {
+    background-color: #ff3b30;
+    transform: scale(1.1);
+}
+
+#app-store .macos-close-button span::before,
+#app-store .macos-close-button span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 1.2px;
+    background-color: #4d0000;
+    transform-origin: center;
+}
+
+#app-store .macos-close-button span::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#app-store .macos-close-button span::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* macOS Minimize Button */
+#app-store .macos-minimize-button {
+    background-color: #ffbd2e;
+}
+
+#app-store .macos-minimize-button:hover {
+    background-color: #f0a623;
+    transform: scale(1.1);
+}
+
+#app-store .macos-minimize-button span {
+    content: "";
+    width: 7px;
+    height: 1.2px;
+    background-color: #704b00;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* macOS Maximize Button */
+#app-store .macos-maximize-button {
+    background-color: #28c940;
+}
+
+#app-store .macos-maximize-button:hover {
+    background-color: #1f9f30;
+    transform: scale(1.1);
+}
+
+#app-store .macos-maximize-button span {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 1.2px solid #006400;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1px; /* Slightly rounded square */
+}
+/* Responsive styles */
+@media (max-width: 1024px) {
+    #app-store .horizontal-slider {
+        gap: 30px; /* Smaller gap for medium screens */
+        padding: 15px 15px 15px 30px; /* Adjusted padding for medium screens */
+    }
+
+    #app-store .horizontal-slider .item {
+        min-width: 300px; /* Medium item size for tablets */
+    }
+
+    #app-store .horizontal-slider .item img {
+        padding: 5px;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    #app-store .horizontal-slider {
+        gap: 20px; /* Smaller gap for medium screens */
+        padding: 10px 10px 10px 20px; /* Adjusted padding for medium screens */
+    }
+
+    #app-store .horizontal-slider .item {
+        min-width: 260px; /* Medium item size for tablets */
+    }
+
+    #app-store .horizontal-slider .item img {
+        width: 150px;
+        height: 150px;
+    }
+    #app-store .macos-button span {
+        opacity: 1 !important; /* Force visibility on mobile devices */
+    }
+}
+
+@media (max-width: 480px) {
+    #app-store .horizontal-slider {
+        gap: 10px; /* Smallest gap for phones */
+        padding: 10px 5px 10px 10px; /* Adjusted padding for phones */
+        scroll-snap-type: x mandatory;
+    }
+
+    #app-store .horizontal-slider .item {
+        scroll-snap-align: center;
+        min-width: 180px; /* Smallest item size for phones */
+        padding: 5px;
+        flex-shrink: 0; /* Prevent items from shrinking smaller than their size */
+    }
+
+    #app-store .horizontal-slider .item img {
+        width: 125px;
+        height: 125px;
+        border-radius: 5px;
+    }
+}
+#app-store .background-image-left {
+    top: 28%;
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+    z-index: -4;
+}

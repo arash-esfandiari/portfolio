@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import "../styles/apps/PythonIde.css"
+
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import { EditorView } from "@codemirror/view";
 import Sk from "skulpt";
 import Split from "react-split";
+
 
 const PythonIde = () => {
   const [code, setCode] = useState("# Write your Python code here\n" + "\n".repeat(30));
@@ -39,62 +42,62 @@ const PythonIde = () => {
   };
 
   return (
-    <div className="ide-container" id="ide">
-      <h1 className="title">Python Code Editor and Compiler</h1>
-      <button className="button" onClick={runCode}>
-        Run
-      </button>
+    <section id="ide">
+      <div className="ide-container" >
+        <h1 className="title">Python Code Editor and Compiler</h1>
+        <button className="button" onClick={runCode}>
+          Run
+        </button>
 
-      {isSmallScreen ? (
-        /* Small screen layout: Stacked vertically */
-        <div className="stacked">
-          <div className="panel">
-            <div className="panel-container">
-              <CodeMirror
-                value={code}
-                theme="dark"
-                extensions={[python(), EditorView.lineWrapping]}
-                onChange={(value) => handleCodeChange(value)}
-                style={{ width: "100%", height: "300px" }}
-              />
+        {isSmallScreen ? (
+          /* Small screen layout: Stacked vertically */
+          <div className="stacked">
+            <div className="panel">
+              <div className="panel-container">
+                <CodeMirror
+                  value={code}
+                  theme="dark"
+                  extensions={[python(), EditorView.lineWrapping]}
+                  onChange={(value) => handleCodeChange(value)}
+                />
+              </div>
+            </div>
+            <div className="panel">
+              <div className="panel-container">
+                <h2>Output:</h2>
+                <pre className="output-pre">{output}</pre>
+              </div>
             </div>
           </div>
-          <div className="panel">
-            <div className="panel-container">
-              <h2>Output:</h2>
-              <pre className="output-pre">{output}</pre>
+        ) : (
+          /* Large screen layout: Side-by-side with resizing */
+          <Split
+            className="split"
+            direction="horizontal"
+            sizes={[50, 50]}
+            minSize={200}
+            gutterSize={10}
+          >
+            <div className="panel">
+              <div className="panel-container">
+                <CodeMirror
+                  value={code}
+                  theme="dark"
+                  extensions={[python(), EditorView.lineWrapping]}
+                  onChange={(value) => handleCodeChange(value)}
+                />
+              </div>
             </div>
-          </div>
-        </div>
-      ) : (
-        /* Large screen layout: Side-by-side with resizing */
-        <Split
-          className="split"
-          direction="horizontal"
-          sizes={[50, 50]}
-          minSize={200}
-          gutterSize={10}
-        >
-          <div className="panel">
-            <div className="panel-container">
-              <CodeMirror
-                value={code}
-                theme="dark"
-                extensions={[python(), EditorView.lineWrapping]}
-                onChange={(value) => handleCodeChange(value)}
-                style={{ width: "100%", height: "100%" }}
-              />
+            <div className="panel">
+              <div className="panel-container">
+                <h2>Output:</h2>
+                <pre className="output-pre">{output}</pre>
+              </div>
             </div>
-          </div>
-          <div className="panel">
-            <div className="panel-container">
-              <h2>Output:</h2>
-              <pre className="output-pre">{output}</pre>
-            </div>
-          </div>
-        </Split>
-      )}
-    </div>
+          </Split>
+        )}
+      </div>
+    </section>
   );
 };
 

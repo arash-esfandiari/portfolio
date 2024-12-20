@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import "../styles/components/AppStore.css"
+
 import colorSharp from "../assets/img/color-sharp.png";
 
 // App and respective image imports
@@ -25,7 +27,7 @@ import GamesIcon from '../assets/img/appIcons/games-icon.png'
 
 
 
-export const CustomApps = () => {
+export const AppStore = () => {
   const [app, setApp] = useState(null);
   const [currentAppName, setCurrentAppName] = useState("");
   const sliderRef = useRef(null);
@@ -69,45 +71,74 @@ export const CustomApps = () => {
     }
   }, [app]);
 
+  const handleMaximizeApp = () => {
+    if (appContainerRef.current) {
+      appContainerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      appContainerRef.current.focus(); // Focus the app container
+    }
+  };
+
   return (
-    <section className="skill" id="apps">
+    <section id="app-store">
       <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <div className="skill-bx wow zoomIn">
-              <h2>Welcome to my App Store</h2>
-              <p>Responsive, practical tools and games created to showcase my coding skills and creativity.</p>
+        <div className="appstore-bx">
+          <h2>App Store</h2>
+          <p>Welcome to my AppStore. Stay tuned for weekly apps and games...</p>
+          <div
+            className="horizontal-slider"
+            ref={sliderRef}
+            onWheel={handleScroll} // Enable horizontal scrolling with trackpad or mouse wheel
+          >
+            {customApps.map((appItem, index) => (
               <div
-                className="horizontal-slider"
-                ref={sliderRef}
-                onWheel={handleScroll} // Enable horizontal scrolling with trackpad or mouse wheel
+                className="item"
+                key={index}
+                onClick={() => handleAppClick(appItem.name, appItem.component)}
               >
-                {customApps.map((appItem, index) => (
-                  <div
-                    className="item"
-                    key={index}
-                    onClick={() => handleAppClick(appItem.name, appItem.component)}
-                  >
-                    <img src={appItem.image} alt={appItem.name} />
-                    <h5>{appItem.name}</h5>
-                  </div>
-                ))}
+                <img src={appItem.image} alt={appItem.name} />
+                <h5>{appItem.name}</h5>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
       <img className="background-image-left" src={colorSharp} alt="Background" />
       {app && (
-        <div ref={appContainerRef} tabIndex="-1" /* Allows focus */
-          className="app-container">
-          <button
-            className="close-button"
-            onClick={handleCloseApp}
-          >
-            X
-          </button>
-          {app}
+        <div>
+          {/* Invisible spacer for focus */}
+          <div
+            ref={appContainerRef}
+            tabIndex="-1"
+            style={{ height: "5px", outline: "none" }}
+          ></div>
+          <div className="app-container">
+            <div className="macos-titlebar">
+              <div className="macos-buttons">
+                <button
+                  className="macos-button macos-close-button"
+                  onClick={handleCloseApp}
+                  title="Close"
+                >
+                  <span></span>
+                </button>
+                <button
+                  className="macos-button macos-minimize-button"
+                  onClick={handleCloseApp}
+                  title="Minimize"
+                >
+                  <span></span>
+                </button>
+                <button
+                  className="macos-button macos-maximize-button"
+                  onClick={handleMaximizeApp}
+                  title="Maximize"
+                >
+                  <span></span>
+                </button>
+              </div>
+            </div>
+            {app}
+          </div>
         </div>
       )}
     </section>

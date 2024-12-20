@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/apps/SprintManager.css"
 
 // Board component represents the sprint board
 const Board = () => {
@@ -56,25 +57,26 @@ const Board = () => {
       ));
 
   return (
-    <div className="app">
-      <h1>Simple Sprint Manager</h1>
-      <button className="add-task-btn" onClick={addTask}>Add Task</button>
-      <div className="board">
-        <div className="section">
-          <h2>To Do</h2>
-          {renderIssues("to_do")}
-        </div>
-        <div className="section">
-          <h2>In Progress</h2>
-          {renderIssues("in_progress")}
-        </div>
-        <div className="section">
-          <h2>Done</h2>
-          {renderIssues("done")}
+    <section id="sprint-manager">
+      <div className="sprint-manager">
+        <h1>Simple Sprint Manager</h1>
+        <button className="add-task-btn" onClick={addTask}>Add Task</button>
+        <div className="board">
+          <div className="section">
+            <h2>To Do</h2>
+            {renderIssues("to_do")}
+          </div>
+          <div className="section">
+            <h2>In Progress</h2>
+            {renderIssues("in_progress")}
+          </div>
+          <div className="section">
+            <h2>Done</h2>
+            {renderIssues("done")}
+          </div>
         </div>
       </div>
-      <style>{styles}</style>
-    </div>
+    </section>
   );
 };
 
@@ -90,109 +92,15 @@ const Issue = ({ issue, assignIssue, markAsComplete }) => {
     );
 
   return (
-    <div className="issue">
-      <h3>{issue.title}</h3>
-      {issue.assignedTo && <p>Assigned to: {issue.assignedTo}</p>}
-      {issue.completedDate && <p>Completed on: {issue.completedDate}</p>}
-      {renderAssignButton()}
-      {renderMarkAsCompleteButton()}
-    </div>
+    <section id="sprint-manager">
+      <div className="issue">
+        <h3>{issue.title}</h3>
+        {issue.assignedTo && <p>Assigned to: {issue.assignedTo}</p>}
+        {issue.completedDate && <p>Completed on: {issue.completedDate}</p>}
+        {renderAssignButton()}
+        {renderMarkAsCompleteButton()}
+      </div>
+    </section>
   );
 };
-
-const styles = `
-  .app {
-    background: #121212; /* Dark mode background */
-    borderRadius: 15px;
-    max-width: 95vw;
-    margin: 35px auto;
-    padding: 10px;
-    font-size: 12px;
-    color: #e0e0e0;
-    border-radius: 10px;
-  }
-
-  .add-task-btn {
-    margin: 10px 0;
-    background-color: #6a0dad; /* Purple color */
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: "background-color 0.3s ease"; // Smooth hover transition
-  }
-
-  .add-task-btn:hover {
-    background-color: #4b0082; /* Darker purple on hover */
-  }
-
-  .board {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .section {
-    padding: 15px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #1e1e1e;
-  }
-
-  .section h2 {
-    margin-top: 0;
-    font-size: 14px;
-    color: #fff;
-  }
-
-  .issue {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #2c2c2c;
-    font-size: 12px;
-  }
-
-  .issue h3 {
-    margin-top: 0;
-    font-size: 12px;
-    color: #fff;
-  }
-
-  .issue p {
-    font-size: 10px;
-    margin: 5px 0;
-    color: #a0a0a0;
-  }
-
-  button {
-    background-color: #6a0dad; /* Purple color */
-    color: #fff;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-  }
-
-  button:hover {
-    transition: background-color 0.3s ease; /* Smooth hover transition */
-    background-color: #4b0082; /* Darker purple on hover */
-  }
-
-  @media (min-width: 768px) {
-    .board {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .section {
-      flex-basis: 30%;
-    }
-  }
-`;
-
 export default Board;

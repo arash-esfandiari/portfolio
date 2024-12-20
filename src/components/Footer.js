@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import logo from "../assets/img/logo.png";
 import navIcon1 from "../assets/img/nav-icon1.svg";
+import "../styles/components/Footer.css"
 
 
 export const Footer = () => {
@@ -11,7 +12,7 @@ export const Footer = () => {
           <Col lg={12}>
             <div className="newsletter-bx wow slideInUp">
               <Row>
-                <h3>Thank you for taking the time to review my portfolio. <br />If you have any questions or would like to discuss further opportunities, please feel free to get in touch. </h3>
+                <h3>Thank you for interacting with my my portfolio.<br /><br />Feel free to use any of the source code to build your own portfolio.</h3>
               </Row>
             </div>
           </Col>
@@ -24,7 +25,7 @@ export const Footer = () => {
               {/* <a href="#"><img src={navIcon2} alt="Icon" /></a>
               <a href="#"><img src={navIcon3} alt="Icon" /></a> */}
             </div>
-            <p>Copyright 2023. All Rights Reserved</p>
+            <p>Last updated: December 2024</p>
           </Col>
         </Row>
       </Container>

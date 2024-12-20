@@ -1,0 +1,158 @@
+/************* SnakeGame.js *************/
+/* General Styling */
+#snake-game {
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+#snake-game h1 {
+    font-size: 5em;
+    color: #ffffff;
+    margin-top: 45px;
+    margin-bottom: 10px;
+}
+#snake-game h2 {
+    color: #f0f0f0;
+    margin: 10px 0;
+}
+
+#snake-game p {
+    color: #bdbdbd;
+}
+
+#snake-game .start-screen {
+    margin-top: 30px;
+}
+
+#snake-game input {
+    padding: 10px;
+    font-size: 18px;
+    background-color: #333;
+    color: #f0f0f0;
+    border: 2px solid #198752;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#snake-game input:focus {
+    outline: none;
+    border-color: #00c853;
+}
+
+/* Button Styling */
+#snake-game button {
+    background-color: #198752;
+    color: #121212;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+}
+
+#snake-game button:hover {
+    background-color: #00c853;
+    transform: scale(1.05);
+}
+
+#snake-game .input-box {
+    margin: 20px 0;
+}
+
+/* Game Board */
+#snake-game .snake-board {
+    display: inline-block;
+    margin: 20px auto;
+    border: 2px solid #444;
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Board Rows */
+#snake-game .snake-row {
+    display: flex;
+}
+
+/* Individual Cells */
+#snake-game .snake-cell {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #444;
+    background-color: #222;
+}
+
+#snake-game .snake-cell.snake {
+    background-color: #167648; /* Snake Color */
+}
+
+#snake-game .snake-cell.food {
+    background-color: #ff1744; /* Food Color */
+}
+
+/* Restart Button Below Game Board */
+#snake-game .restart-container {
+    margin-top: 20px;
+}
+
+/* Leaderboard */
+#snake-game .leaderboard {
+    margin-top: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+#snake-game .leaderboard ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#snake-game .leaderboard li {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #bdbdbd;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    #snake-game h1 {
+        font-size: 3em;
+    }
+
+    #snake-game input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #snake-game button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    #snake-game .snake-cell {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    #snake-game .snake-cell {
+        width: 18px;
+        height: 18px;
+    }
+
+    #snake-game button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

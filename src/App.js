@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavBar } from './components/NavBar';
 import { Banner } from './components/Banner';
-import { CustomApps } from './components/CustomApps';
+import { AppStore } from './components/AppStore';
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -12,7 +12,7 @@ function App() {
         <div className="App">
             <NavBar />
             <Banner />
-            <CustomApps />
+            <AppStore />
             <Projects />
             <Contact />
             <Footer />

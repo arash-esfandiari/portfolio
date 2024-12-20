@@ -1,0 +1,30 @@
+/************ Footer Css ************/
+.footer {
+    padding: 0 0 50px 0;
+    background-image: url("../../assets/img/footer-bg.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.newsletter-bx {
+    background: #1f1f1f;
+    border-radius: 55px;
+    padding: 35px;
+    margin-bottom: 80px;
+    margin-top: -122px;
+}
+.newsletter-bx h3 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.2em;
+}
+.footer img {
+    width: 26%;
+}
+.footer p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #b8b8b8;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+}

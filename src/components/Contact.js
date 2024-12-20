@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/components/Contact.css"
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 import emailjs from "emailjs-com";
@@ -30,10 +31,10 @@ export const Contact = () => {
 
     // Use EmailJS to send form data
     emailjs.send(
-      "service_0m6d6mr", // Replace with your EmailJS Service ID
-      "template_s0ajpvs", // Replace with your EmailJS Template ID
+      process.env.REACT_APP_EMAILJS_SERVICE_ID, // Service ID from .env
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Template ID from .env
       formDetails,
-      "UpOqmVziOh5XTlZik" // Replace with your EmailJS User ID
+      process.env.REACT_APP_EMAILJS_USER_ID // User ID from .env
     )
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
@@ -64,7 +65,7 @@ export const Contact = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                  <h2>What did you think?</h2>
+                  <h2>What do you think?</h2>
                   <form onSubmit={handleSubmit}>
                     <Row>
                       <Col size={12} sm={6} className="px-1">

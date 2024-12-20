@@ -1,5 +1,9 @@
+import React, { useState } from "react";
+import "../styles/components/Projects.css"
+
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
 // Design Images
 import colorSharp2 from "../assets/img/color-sharp2.png";
 // Projects Images
@@ -13,6 +17,8 @@ import blockchainImg from '../assets/img/projects/blockchain.webp'
 import guelphImg from "../assets/img/education/guelph.webp";
 import softengImg from '../assets/img/education/softwareEng.webp'
 import businessImg from '../assets/img/education/money.png'
+import bagImg from '../assets/img/education/bag.png'
+
 // Skils Images
 import awsImg from "../assets/img/skills/aws-cert.png";
 import parallelProgImg from "../assets/img/skills/parallel-prog.webp";
@@ -33,51 +39,100 @@ import reactnativeLogo from '../assets/img/skills/react-native.svg'
 import goImg from '../assets/img/skills/GoLogo.svg'
 import dockerImg from '../assets/img/skills/docker.png'
 import redisImg from '../assets/img/skills/redis_logo.png'
-import postgreImg from '../assets/img/skills/PostgreSQL_logo.svg'
+import postgreImg from '../assets/img/skills/postgreSQL.webp'
 import mongodbImg from '../assets/img/skills/mongoDB_logo.png'
 
-
-
+// App Gallery
+import uberloneMain from "../assets/img/appGallery/Uberlone/Uberlone-main.webp"
+import uberloneRides from "../assets/img/appGallery/Uberlone/Uberlone-rides.webp"
 
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
+  const [showModal, setShowModal] = useState(false); // Controls modal visibility
+  const [selectedProject, setSelectedProject] = useState(null); // Selected project data
+
+  // Function to handle project card click
+  const handleCardClick = (project) => {
+    setSelectedProject(project);
+    setShowModal(true);
+  };
+
+
   const projects = [
     {
       title: "Django E-Commerce",
-      description: "Django, React, Redux, S3, Heroku, PostgreSQL",
+      shortDescription: "Django, React, Redux, S3, Heroku, PostgreSQL",
+      fullDescription: "A full-stack e-commerce platform built with Django, React, and Redux, featuring secure user authentication with JWT, robust state management, and AWS RDS for scalable data storage. The platform allows users to manage accounts, search products, and complete purchases seamlessly, while an admin panel enables efficient product and user management, including updates and deletions.",
       imgUrl: arashshopImg,
       link: "https://github.com/arash-esfandiari/ArashShop-Django",
+      gallery: [
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+      ],
     },
     {
       title: "Arashflix",
-      description: "React, Firebase, TMDB Live Database",
+      shortDescription: "React, Firebase, TMDB Live Database",
+      fullDescription: "ArashFlix is the first ReactJS website I developed after graduating from university, created by following online tutorials. Built with ReactJS and Firebase, this site mimics Netflix’s design and showcases up-to-date movies and series by integrating The Movie Database (TMDB) API. It features an automated trailer finder that occasionally locates matching trailers on YouTube, delivering a dynamic and engaging user experience. However, the project does not yet implement image optimization or lazy loading, which results in slower image loading times. ArashFlix reflects my early steps into web development and my passion for building interactive applications.",
       imgUrl: arashflixImg,
       link: "https://arashflix.web.app/",
+      gallery: [
+        arashflixImg,
+        arashshopImg,
+        arashshopImg,
+      ],
     },
     {
       title: "Uberlone",
-      description: "React Native, Redux, Google Maps API",
+      shortDescription: "React Native, Redux, Google Maps API",
+      fullDescription: "A React Native Uber clone application featuring a sleek and intuitive interface similar to Uber. The app calculates trip cost estimates based on the origin and destination, leveraging real-time traffic data and the fastest routes via Google Maps integration. It offers multiple ride options, including Uberlone X, Uberlone XL, and Uberlone LUX, mimicking Uber’s ride classes. Using optimized pricing formulas, the app delivers highly accurate fare estimates closely matching Uber’s rates, providing a seamless and reliable user experience for trip planning.",
       imgUrl: uberloneImg,
       link: "https://github.com/arash-esfandiari/uberlone",
+      gallery: [
+        uberloneMain,
+        uberloneRides,
+      ],
     },
     {
       title: "Kubernetes",
-      description: "Pods, Deployments",
+      shortDescription: "Pods, Deployments",
+      fullDescription: "This is the full description of this section. This is the full description of this section. This is the full description of this section. This is the full description of this section. This is the full description of this section.",
       imgUrl: k8Img,
       link: "https://github.com/arash-esfandiari/kubernetes-demo",
+      gallery: [
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+      ],
     },
     {
       title: "YourCraft",
-      description: "C, OpenGL, 3D Game Design, AI enemies",
+      shortDescription: "C, OpenGL, 3D Game Design, AI enemies",
+      fullDescription: "This is the full description of this section.",
       imgUrl: gameImg,
+      gallery: [
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+      ],
     },
     {
       title: "RashCoin",
-      description: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
+      shortDescription: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
+      fullDescription: "This is the full description of this section.",
       imgUrl: blockchainImg,
       link: "https://github.com/arash-esfandiari/AryeBlockchain",
+      gallery: [
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+        arashshopImg,
+      ],
     },
   ];
   const education = [
@@ -87,20 +142,20 @@ export const Projects = () => {
     },
     {
       title: "Software Engineering Major",
-      description: "University of Guelph",
+      shortDescription: "University of Guelph",
       imgUrl: softengImg,
     },
     {
       title: "Business Minor",
-      description: "University of Guelph",
-      imgUrl: businessImg,
+      shortDescription: "University of Guelph",
+      imgUrl: bagImg,
     },
   ];
 
   const skills = [
     {
       title: "AWS Certified Cloud Practitioner",
-      description: "Cloud Architecture, Storages, Databases",
+      shortDescription: "Cloud Architecture, Storages, Databases",
       imgUrl: awsImg,
     },
     {
@@ -113,12 +168,12 @@ export const Projects = () => {
     },
     {
       title: "Cryptography",
-      description: "Network Security, Cryptography Algorithm Details, Ethical Hacking",
+      shortDescription: "Network Security, Cryptography Algorithm Details, Ethical Hacking",
       imgUrl: cryptoImg,
     },
     {
       title: "Parallel Programming",
-      description: "C, OpenGL, OpenCL, Multi-Threading",
+      shortDescription: "C, OpenGL, OpenCL, Multi-Threading",
       imgUrl: parallelProgImg,
     },
     {
@@ -197,12 +252,20 @@ export const Projects = () => {
         <Row>
           <Col size={12}>
             <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+              {({ isVisible }) => (
+                <div
+                  className={
+                    isVisible ? "animate__animated animate__fadeIn" : ""
+                  }
+                >
                   <h2>Relevant Skills</h2>
                   <p>A brief history about my professional life.</p>
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                    <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+                    <Nav
+                      variant="pills"
+                      className="nav-pills mb-5 justify-content-center align-items-center"
+                      id="pills-tab"
+                    >
                       <Nav.Item>
                         <Nav.Link eventKey="first">Education 📚</Nav.Link>
                       </Nav.Item>
@@ -213,58 +276,71 @@ export const Projects = () => {
                         <Nav.Link eventKey="third">Projects 💻</Nav.Link>
                       </Nav.Item>
                     </Nav>
-                    <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
+                    <Tab.Content
+                      id="slideInUp"
+                      className={
+                        isVisible ? "animate__animated animate__slideInUp" : ""
+                      }
+                    >
+                      {/* Education Tab */}
                       <Tab.Pane eventKey="first">
                         <Row>
-                          <Row>
-                            {
-                              education.map((educItem, index) => {
-                                return (
-                                  <ProjectCard
-                                    key={index}
-                                    {...educItem}
-                                  />
-                                )
-                              })
-                            }
-                          </Row>
+                          {education.map((educItem, index) => (
+                            <ProjectCard
+                              key={index}
+                              {...educItem}
+                              onCardClick={handleCardClick}
+                            />
+                          ))}
                         </Row>
                       </Tab.Pane>
+
+                      {/* Skills Tab */}
                       <Tab.Pane eventKey="second">
                         <Row>
-                          {
-                            skills.map((skill, index) => {
-                              return (
-                                <ProjectCard
-                                  key={index}
-                                  {...skill}
-                                />
-                              )
-                            })
-                          }
+                          {skills.map((skill, index) => (
+                            <ProjectCard
+                              key={index}
+                              {...skill}
+                              onCardClick={handleCardClick}
+                            />
+                          ))}
                         </Row>
                       </Tab.Pane>
+
+                      {/* Projects Tab */}
                       <Tab.Pane eventKey="third">
                         <Row>
-                          {
-                            projects.map((project, index) => {
-                              return (
-                                <ProjectCard
-                                  key={index}
-                                  {...project}
-                                />
-                              )
-                            })
-                          }
-                        </Row> </Tab.Pane>
+                          {projects.map((project, index) => (
+                            <ProjectCard
+                              key={index}
+                              {...project}
+                              onCardClick={handleCardClick}
+                            />
+                          ))}
+                        </Row>
+                      </Tab.Pane>
                     </Tab.Content>
                   </Tab.Container>
-                </div>}
+                </div>
+              )}
             </TrackVisibility>
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2} alt="bck-img"></img>
+
+      {/* Modal Component */}
+      <ProjectModal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        project={selectedProject}
+      />
+
+      <img
+        className="background-image-right"
+        src={colorSharp2}
+        alt="bck-img"
+      ></img>
     </section>
   )
 }
