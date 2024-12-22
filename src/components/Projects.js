@@ -69,8 +69,6 @@ export const Projects = () => {
       link: "https://github.com/arash-esfandiari/ArashShop-Django",
       gallery: [
         arashshopImg,
-        arashshopImg,
-        arashshopImg,
       ],
     },
     {
@@ -81,8 +79,6 @@ export const Projects = () => {
       link: "https://arashflix.web.app/",
       gallery: [
         arashflixImg,
-        arashshopImg,
-        arashshopImg,
       ],
     },
     {
@@ -103,10 +99,8 @@ export const Projects = () => {
       imgUrl: k8Img,
       link: "https://github.com/arash-esfandiari/kubernetes-demo",
       gallery: [
-        arashshopImg,
-        arashshopImg,
-        arashshopImg,
-        arashshopImg,
+        k8Img,
+
       ],
     },
     {
@@ -115,10 +109,7 @@ export const Projects = () => {
       fullDescription: "This is the full description of this section.",
       imgUrl: gameImg,
       gallery: [
-        arashshopImg,
-        arashshopImg,
-        arashshopImg,
-        arashshopImg,
+        gameImg,
       ],
     },
     {
@@ -128,10 +119,7 @@ export const Projects = () => {
       imgUrl: blockchainImg,
       link: "https://github.com/arash-esfandiari/AryeBlockchain",
       gallery: [
-        arashshopImg,
-        arashshopImg,
-        arashshopImg,
-        arashshopImg,
+        blockchainImg,
       ],
     },
   ];

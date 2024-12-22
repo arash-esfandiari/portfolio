@@ -259,3 +259,43 @@
     width: 40%;
     z-index: -4;
 }
+
+/* iOS-like Grid Layout for Phones */
+@media (max-width: 768px) {
+    #app-store .appstore-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Three apps per row */
+        gap: 15px; /* Space between apps */
+        padding: 15px; /* Inner padding */
+        justify-content: center;
+    }
+
+    /* App Item Styling */
+    #app-store .app-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    #app-store .app-item img {
+        width: 70px; /* App icon size */
+        height: 70px;
+        border-radius: 15px; /* Rounded corners like iOS */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #app-store .app-item h5 {
+        margin-top: 8px;
+        color: #e0e0e0;
+        font-size: 12px; /* Smaller text for phones */
+    }
+
+    /* Optional hover effect */
+    #app-store .app-item:active {
+        transform: scale(0.95); /* Press effect on touch */
+    }
+}

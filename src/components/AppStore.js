@@ -32,6 +32,7 @@ export const AppStore = () => {
   const [currentAppName, setCurrentAppName] = useState("");
   const sliderRef = useRef(null);
   const appContainerRef = useRef(null); // Ref for the app container
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Track screen size
 
   const customApps = [
     { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
@@ -41,6 +42,15 @@ export const AppStore = () => {
     { name: "Graphing Calculator", image: grapgingCalcImg, component: <GraphingCalculator /> },
     { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> }
   ];
+
+  // Resize listener to update state on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleAppClick = (appName, component) => {
     if (currentAppName === appName) {
@@ -84,22 +94,33 @@ export const AppStore = () => {
         <div className="appstore-bx">
           <h2>App Store</h2>
           <p>Welcome to my AppStore. Stay tuned for weekly apps and games...</p>
-          <div
-            className="horizontal-slider"
-            ref={sliderRef}
-            onWheel={handleScroll} // Enable horizontal scrolling with trackpad or mouse wheel
-          >
-            {customApps.map((appItem, index) => (
-              <div
-                className="item"
-                key={index}
-                onClick={() => handleAppClick(appItem.name, appItem.component)}
-              >
-                <img src={appItem.image} alt={appItem.name} />
-                <h5>{appItem.name}</h5>
-              </div>
-            ))}
-          </div>
+          {isMobile ? (
+            <div className="appstore-grid">
+              {customApps.map((appItem, index) => (
+                <div
+                  className="app-item"
+                  key={index}
+                  onClick={() => handleAppClick(appItem.name, appItem.component)}
+                >
+                  <img src={appItem.image} alt={appItem.name} />
+                  <h5>{appItem.name}</h5>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="horizontal-slider" ref={sliderRef}>
+              {customApps.map((appItem, index) => (
+                <div
+                  className="item"
+                  key={index}
+                  onClick={() => handleAppClick(appItem.name, appItem.component)}
+                >
+                  <img src={appItem.image} alt={appItem.name} />
+                  <h5>{appItem.name}</h5>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <img className="background-image-left" src={colorSharp} alt="Background" />

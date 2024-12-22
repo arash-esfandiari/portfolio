@@ -5,13 +5,13 @@ const GraphingCalculator = () => {
     const canvasRef = useRef(null);
     const [functionInput, setFunctionInput] = useState("");
 
-    const width = 800;
+    const width = 400; // Square canvas dimensions
     const height = 400;
 
     const xMin = -10;
     const xMax = 10;
-    const yMin = -5;
-    const yMax = 5;
+    const yMin = -10; // Make sure x and y ranges are the same
+    const yMax = 10;
 
     const xScale = width / (xMax - xMin);
     const yScale = height / (yMax - yMin);
@@ -116,29 +116,31 @@ const GraphingCalculator = () => {
     }, []);
 
     return (
-        <section className="graphing-calc" id="g-calc">
+        <section id="g-calc">
             <div className="container">
-                <h1 style={{ color: "#e0e0e0" }}>Graphing Calculator</h1>
-                <div className="input-area ">
+                <h1>Graphing Calculator</h1>
+                <div className="input-area">
                     <label htmlFor="function">
                         Function (e.g., x^2, sin(x), log(x)):
                     </label>
-                    <input
-                        className="input"
-                        type="text"
-                        id="function"
-                        value={functionInput}
-                        onChange={(e) => setFunctionInput(e.target.value)}
-                        placeholder="Enter a function of x"
-                    />
-                    <button
-                        className="button"
-                        onClick={handlePlot}
-                        onMouseEnter={(e) => (e.target.style.backgroundColor = "#4b0082")}
-                        onMouseLeave={(e) => (e.target.style.backgroundColor = "#6a0dad")}
-                    >
-                        Plot Graph
-                    </button>
+                    <div className="input-wrapper">
+                        <input
+                            className="input"
+                            type="text"
+                            id="function"
+                            value={functionInput}
+                            onChange={(e) => setFunctionInput(e.target.value)}
+                            placeholder="Enter a function of x"
+                        />
+                        <button
+                            className="button"
+                            onClick={handlePlot}
+                            onMouseEnter={(e) => (e.target.style.backgroundColor = "#4b0082")}
+                            onMouseLeave={(e) => (e.target.style.backgroundColor = "#6a0dad")}
+                        >
+                            Plot Graph
+                        </button>
+                    </div>
                 </div>
                 <canvas
                     className="canvas"
