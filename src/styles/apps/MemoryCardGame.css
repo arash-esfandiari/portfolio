@@ -14,6 +14,7 @@
 #mc-game h1 {
     color: #ffffff;
     margin-bottom: 10px;
+    font-size: 4em;
 }
 
 #mc-game h2 {
@@ -164,7 +165,7 @@
         max-width: 100%; /* Use full width */
     }
     #mc-game h1 {
-        font-size: 1.2em;
+        font-size: 3em;
     }
     #mc-game .card-front,
     #mc-game .card-back {

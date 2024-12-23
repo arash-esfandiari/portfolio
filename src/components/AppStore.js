@@ -30,9 +30,8 @@ import GamesIcon from '../assets/img/appIcons/games-icon.png'
 export const AppStore = () => {
   const [app, setApp] = useState(null);
   const [currentAppName, setCurrentAppName] = useState("");
-  const sliderRef = useRef(null);
   const appContainerRef = useRef(null); // Ref for the app container
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Track screen size
+  const activeAppItemRef = useRef(null); // Ref for the currently clicked app item
 
   const customApps = [
     { name: "Image Converter", image: ImgConverterImg, component: <ImageConverter /> },
@@ -43,22 +42,19 @@ export const AppStore = () => {
     { name: "Simple Sprint Manager", image: sprintManagerImg, component: <SprintManager /> }
   ];
 
-  // Resize listener to update state on window resize
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
-  const handleAppClick = (appName, component) => {
+  const handleAppClick = (appName, component, appItemRef) => {
     if (currentAppName === appName) {
       setApp(null);
       setCurrentAppName("");
     } else {
       setApp(component);
       setCurrentAppName(appName);
+
+      // Focus the clicked app item
+      if (appItemRef) {
+        appItemRef.focus();
+      }
     }
   };
 
@@ -67,19 +63,11 @@ export const AppStore = () => {
     setCurrentAppName("");
   };
 
-  const handleScroll = (e) => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollLeft += e.deltaY * 1.5; // Adjust scroll speed
-    }
-  };
-
-  // Focus or scroll into the app container when an app is opened
-  useEffect(() => {
-    if (app && appContainerRef.current) {
-      appContainerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      appContainerRef.current.focus();
-    }
-  }, [app]);
+  // const handleScroll = (e) => {
+  //   if (sliderRef.current) {
+  //     sliderRef.current.scrollLeft += e.deltaY * 1.5; // Adjust scroll speed
+  //   }
+  // };
 
   const handleMaximizeApp = () => {
     if (appContainerRef.current) {
@@ -88,39 +76,31 @@ export const AppStore = () => {
     }
   };
 
+  // Focus or scroll into the app container when an app is opened
+  useEffect(() => {
+    handleMaximizeApp();
+  }, [app]);
+
+
   return (
     <section id="app-store">
       <div className="container">
         <div className="appstore-bx">
           <h2>App Store</h2>
           <p>Welcome to my AppStore. Stay tuned for weekly apps and games...</p>
-          {isMobile ? (
-            <div className="appstore-grid">
-              {customApps.map((appItem, index) => (
-                <div
-                  className="app-item"
-                  key={index}
-                  onClick={() => handleAppClick(appItem.name, appItem.component)}
-                >
-                  <img src={appItem.image} alt={appItem.name} />
-                  <h5>{appItem.name}</h5>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="horizontal-slider" ref={sliderRef}>
-              {customApps.map((appItem, index) => (
-                <div
-                  className="item"
-                  key={index}
-                  onClick={() => handleAppClick(appItem.name, appItem.component)}
-                >
-                  <img src={appItem.image} alt={appItem.name} />
-                  <h5>{appItem.name}</h5>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="appstore-grid">
+            {customApps.map((appItem, index) => (
+              <div
+                className={`app-item ${currentAppName === appItem.name ? "selected" : ""}`}
+                key={index}
+                tabIndex="0" // Make focusable
+                onClick={(e) => handleAppClick(appItem.name, appItem.component, e.currentTarget)}
+              >
+                <img src={appItem.image} alt={appItem.name} />
+                <h5>{appItem.name}</h5>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <img className="background-image-left" src={colorSharp} alt="Background" />
@@ -129,7 +109,6 @@ export const AppStore = () => {
           {/* Invisible spacer for focus */}
           <div
             ref={appContainerRef}
-            tabIndex="-1"
             style={{ height: "5px", outline: "none" }}
           ></div>
           <div className="app-container">

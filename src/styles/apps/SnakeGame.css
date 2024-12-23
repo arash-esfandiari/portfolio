@@ -12,7 +12,7 @@
 }
 
 #snake-game h1 {
-    font-size: 5em;
+    font-size: 4em;
     color: #ffffff;
     margin-top: 45px;
     margin-bottom: 10px;
@@ -130,29 +130,11 @@
     }
 
     #snake-game input {
-        font-size: 14px;
         padding: 8px;
     }
 
-    #snake-game button {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
     #snake-game .snake-cell {
         width: 18px;
         height: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-    #snake-game .snake-cell {
-        width: 18px;
-        height: 18px;
-    }
-
-    #snake-game button {
-        font-size: 12px;
-        padding: 6px 12px;
     }
 }

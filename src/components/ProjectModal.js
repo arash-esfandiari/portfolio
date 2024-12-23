@@ -96,7 +96,7 @@ const ProjectModal = ({ show, onClose, project }) => {
                         {/* Left: Project Description */}
                         <div className="custom-modal-description">
                             <h4>Description</h4>
-                            <p className="description">{project.fullDescription}</p>
+                            <div className="description">{project.fullDescription}</div>
                             {/* Buttons for external links */}
                             <div className="custom-modal-buttons">
                                 {/* Visit Project Button */}

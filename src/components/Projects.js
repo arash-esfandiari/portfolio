@@ -115,7 +115,14 @@ export const Projects = () => {
     {
       title: "RashCoin",
       shortDescription: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
-      fullDescription: "This is the full description of this section.",
+      fullDescription: (
+        <div>
+          <br />
+          <p style={{ fontStyle: "italic" }}>
+            This is the full description of this section.
+          </p>
+        </div>
+      ),
       imgUrl: blockchainImg,
       link: "https://github.com/arash-esfandiari/AryeBlockchain",
       gallery: [
@@ -126,6 +133,17 @@ export const Projects = () => {
   const education = [
     {
       title: "University of Guelph",
+      fullDescription: (
+        <div>
+          <br />
+          <h3>University of Guelph</h3>
+          <p><strong>Honours Bachelor of Computing</strong></p>
+          <br />
+          <p style={{ fontStyle: "italic" }}>
+            Graduated at the top of my class, showcasing academic excellence and a strong foundation in computing.
+          </p>
+        </div>
+      ),
       imgUrl: guelphImg,
     },
     {
@@ -235,7 +253,7 @@ export const Projects = () => {
   ];
 
   return (
-    <section className="project" id="projects">
+    <section className="project" id="experience">
       <Container>
         <Row>
           <Col size={12}>
@@ -246,7 +264,7 @@ export const Projects = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
-                  <h2>Relevant Skills</h2>
+                  <h2>My Journey 🛤️</h2>
                   <p>A brief history about my professional life.</p>
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     <Nav
