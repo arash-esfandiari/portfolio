@@ -21,6 +21,15 @@
     width: 56%;
 }
 
+.project li {
+    color: #b8b8b8;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    margin: 14px auto 30px auto;
+    text-align: left;
+    line-height: 1em;
+}
+
 .project .nav.nav-pills {
     width: 72%;
     margin: 0 auto;

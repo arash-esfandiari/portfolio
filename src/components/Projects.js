@@ -59,12 +59,46 @@ export const Projects = () => {
     setShowModal(true);
   };
 
-
+  // A full-stack e-commerce platform built with Django, React, and Redux, featuring , robust state management, and AWS RDS for scalable data storage. The platform allows users to manage accounts, search products, and complete purchases seamlessly, while an admin panel enables efficient product and user management, including updates and deletions. The project showcases my proficiency in full-stack development, emphasizing secure and efficient e-commerce solutions.
   const projects = [
     {
-      title: "Django E-Commerce",
+      title: "ArashShop",
       shortDescription: "Django, React, Redux, S3, Heroku, PostgreSQL",
-      fullDescription: "A full-stack e-commerce platform built with Django, React, and Redux, featuring secure user authentication with JWT, robust state management, and AWS RDS for scalable data storage. The platform allows users to manage accounts, search products, and complete purchases seamlessly, while an admin panel enables efficient product and user management, including updates and deletions.",
+      fullDescription: (
+        <div>
+          <h3>Description</h3>
+          <p><strong>Django E-Commerce</strong></p>
+          <br />
+          <ul>
+            <li><strong>Technologies Used:</strong>
+              <ul>
+                <li>Django, React, and Redux for development.</li>
+                <li>AWS RDS for scalable data storage.</li>
+                <li>Robust state management.</li>
+              </ul>
+            </li>
+            <li><strong>User Features:</strong>
+              <ul>
+                <li>Manage accounts.</li>
+                <li>Search for products.</li>
+                <li>Complete purchases seamlessly.</li>
+              </ul>
+            </li>
+            <li><strong>Admin Panel:</strong>
+              <ul>
+                <li>Efficient product and user management.</li>
+                <li>Includes features for product updates and deletions.</li>
+              </ul>
+            </li>
+            <li><strong>Project Highlights:</strong>
+              <ul>
+                <li>Demonstrates proficiency in full-stack development.</li>
+                <li>Focuses on secure and efficient e-commerce solutions.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      ),
       imgUrl: arashshopImg,
       link: "https://github.com/arash-esfandiari/ArashShop-Django",
       gallery: [
@@ -74,7 +108,46 @@ export const Projects = () => {
     {
       title: "Arashflix",
       shortDescription: "React, Firebase, TMDB Live Database",
-      fullDescription: "ArashFlix is the first ReactJS website I developed after graduating from university, created by following online tutorials. Built with ReactJS and Firebase, this site mimics Netflix’s design and showcases up-to-date movies and series by integrating The Movie Database (TMDB) API. It features an automated trailer finder that occasionally locates matching trailers on YouTube, delivering a dynamic and engaging user experience. However, the project does not yet implement image optimization or lazy loading, which results in slower image loading times. ArashFlix reflects my early steps into web development and my passion for building interactive applications.",
+      fullDescription: (
+        <div>
+          <h3>Description</h3>
+          <p><strong>Netflix-inspired ReactJS app.</strong></p>
+          <br />
+          <ul>
+            <li><strong>Technologies Used:</strong>
+              <ul>
+                <li>ReactJS and Firebase.</li>
+                <li>Integration with The Movie Database (TMDB) API.</li>
+              </ul>
+            </li>
+            <li><strong>Project Highlights:</strong>
+              <ul>
+                <li>First ReactJS website developed after graduating from university.</li>
+                <li>Mimics Netflix's design and user interface.</li>
+                <li>Showcases up-to-date movies and series.</li>
+              </ul>
+            </li>
+            <li><strong>Features:</strong>
+              <ul>
+                <li>Automated trailer finder (works occasionally).</li>
+                <li>Displays movie and series information from TMDB.</li>
+              </ul>
+            </li>
+            <li><strong>Limitations:</strong>
+              <ul>
+                <li>Does not implement image optimization.</li>
+                <li>Lacks lazy loading, resulting in slower image loading.</li>
+              </ul>
+            </li>
+            <li><strong>Personal Reflection:</strong>
+              <ul>
+                <li>Represents early steps into web development.</li>
+                <li>Reflects a passion for building interactive applications.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      ),
       imgUrl: arashflixImg,
       link: "https://arashflix.web.app/",
       gallery: [
@@ -84,7 +157,45 @@ export const Projects = () => {
     {
       title: "Uberlone",
       shortDescription: "React Native, Redux, Google Maps API",
-      fullDescription: "A React Native Uber clone application featuring a sleek and intuitive interface similar to Uber. The app calculates trip cost estimates based on the origin and destination, leveraging real-time traffic data and the fastest routes via Google Maps integration. It offers multiple ride options, including Uberlone X, Uberlone XL, and Uberlone LUX, mimicking Uber’s ride classes. Using optimized pricing formulas, the app delivers highly accurate fare estimates closely matching Uber’s rates, providing a seamless and reliable user experience for trip planning.",
+      fullDescription: (
+        <div>
+          <h3>Description</h3>
+          <p><strong>Uber-like React Native app.</strong></p>
+          <br />
+          <ul>
+            <li><strong>Project Description:</strong>
+              <ul>
+                <li>A React Native Uber clone application.</li>
+                <li>Features a sleek and intuitive interface similar to Uber.</li>
+              </ul>
+            </li>
+            <li><strong>Key Features:</strong>
+              <ul>
+                <li>Calculates trip cost estimates based on the origin and destination.</li>
+                <li>Leverages real-time traffic data and fastest routes via Google Maps integration.</li>
+                <li>Offers multiple ride options:
+                  <ul>
+                    <li>Uberlone X</li>
+                    <li>Uberlone XL</li>
+                    <li>Uberlone LUX</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Technical Highlights:</strong>
+              <ul>
+                <li>Optimized pricing formulas for accurate fare estimates.</li>
+                <li>Fare estimates closely match Uber’s rates.</li>
+              </ul>
+            </li>
+            <li><strong>User Experience:</strong>
+              <ul>
+                <li>Provides a seamless and reliable experience for trip planning.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      ),
       imgUrl: uberloneImg,
       link: "https://github.com/arash-esfandiari/uberlone",
       gallery: [
@@ -95,7 +206,37 @@ export const Projects = () => {
     {
       title: "Kubernetes",
       shortDescription: "Pods, Deployments",
-      fullDescription: "This is the full description of this section. This is the full description of this section. This is the full description of this section. This is the full description of this section. This is the full description of this section.",
+      fullDescription: (
+        <div>
+          <h3>Description</h3>
+          <p><strong>Containerized Deployment</strong></p>
+          <br />
+          <ul>
+            <li><strong>Project Overview:</strong> A Kubernetes-based deployment for a MongoDB database and a Node.js web application, showcasing secure integration and scalability.</li>
+            <li><strong>MongoDB Deployment:</strong>
+              <ul>
+                <li>Deployed using the <code>mongo:5.0</code> image.</li>
+                <li>Credentials managed securely with Kubernetes Secrets.</li>
+                <li>Exposed on port <code>27017</code> via a NodePort service.</li>
+              </ul>
+            </li>
+            <li><strong>Web Application Deployment:</strong>
+              <ul>
+                <li>Deployed using the <code>nanajashia/k8s-demo-app:1.0</code> image.</li>
+                <li>Connects to MongoDB using Secrets and a ConfigMap for the database URL.</li>
+                <li>Exposed on port <code>3000</code>.</li>
+              </ul>
+            </li>
+            <li><strong>Key Features:</strong>
+              <ul>
+                <li>Secure management of sensitive data using Kubernetes Secrets.</li>
+                <li>ConfigMap used to pass the MongoDB connection URL to the web application.</li>
+                <li>Scalable deployment with replica settings for both services.</li>
+              </ul>
+            </li>
+          </ul>
+        </div >
+      ),
       imgUrl: k8Img,
       link: "https://github.com/arash-esfandiari/kubernetes-demo",
       gallery: [
@@ -105,8 +246,53 @@ export const Projects = () => {
     },
     {
       title: "YourCraft",
-      shortDescription: "C, OpenGL, 3D Game Design, AI enemies",
-      fullDescription: "This is the full description of this section.",
+      shortDescription: "C, OpenGL, 3D Game Design, Intelligent Enemies",
+      fullDescription: (
+        <div>
+          <h3>Description</h3>
+          <p><strong>Minecraft-inspired 3D game</strong></p>
+          <br />
+          <ul>
+            <li><strong>Game Overview:</strong>
+              <ul>
+                <li>A Minecraft-inspired game with two levels: an underground dungeon and an open-world terrain.</li>
+              </ul>
+            </li>
+            <li><strong>Technologies Used:</strong>
+              <ul>
+                <li>Written in <code>C</code> using <code>OpenCL</code> for parallel computing and <code>OpenGL</code> for rendering.</li>
+              </ul>
+            </li>
+            <li><strong>Key Features:</strong>
+              <ul>
+                <li><strong>Underground Dungeon:</strong>
+                  <ul>
+                    <li>Intense gameplay with intelligent enemies.</li>
+                    <li>Enemies attack when you enter their field of vision.</li>
+                  </ul>
+                </li>
+                <li><strong>Open World:</strong>
+                  <ul>
+                    <li>Features valleys and troughs created using procedural world-generation algorithms.</li>
+                  </ul>
+                </li>
+                <li><strong>Level Transition:</strong>
+                  <ul>
+                    <li>Elevator system connecting the open world and the dungeon.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Gameplay Highlights:</strong>
+              <ul>
+                <li>Strategic exploration with visually rich environments.</li>
+                <li>Adaptive AI-driven enemy behavior for a challenging experience.</li>
+                <li>Dynamic world-building for diverse and immersive terrains.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      ),
       imgUrl: gameImg,
       gallery: [
         gameImg,
@@ -117,10 +303,35 @@ export const Projects = () => {
       shortDescription: "Python, Cryptography, RSA Key Generation, Hashing, PoW, Transactions",
       fullDescription: (
         <div>
+          <h3>Description</h3>
+          <p><strong>Python-based blockchain system</strong></p>
           <br />
-          <p style={{ fontStyle: "italic" }}>
-            This is the full description of this section.
-          </p>
+          <ul>
+            <li><strong>Project Overview:</strong> A Python-based blockchain implementation featuring core cryptographic and mining functionalities.</li>
+            <li><strong>Key Features:</strong>
+              <ul>
+                <li><strong>Nonce Generation:</strong> Implements proof-of-work consensus by generating nonces for block mining.</li>
+                <li><strong>Transaction Verification:</strong> Validates transactions before they are added to the blockchain.</li>
+                <li><strong>Miner Functionality:</strong> Includes a mining process to secure the blockchain and add new blocks.</li>
+                <li><strong>Signatures:</strong> Utilizes digital signatures to ensure transaction authenticity and integrity.</li>
+                <li><strong>Key Generation:</strong> Generates public and private key pairs for secure identity management.</li>
+                <li><strong>Cryptographic Features:</strong>
+                  <ul>
+                    <li>Employs hashing algorithms (e.g., SHA-256) for data integrity.</li>
+                    <li>Supports encryption and decryption mechanisms for secure communication.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Use Cases:</strong>
+              <ul>
+                <li>Securely recording and verifying transactions in a distributed ledger.</li>
+                <li>Demonstrating cryptographic principles in blockchain systems.</li>
+                <li>Simulating real-world blockchain mining and validation processes.</li>
+              </ul>
+            </li>
+            <li><strong>Technologies Used:</strong> Developed in Python with libraries for cryptographic operations (e.g., <code>hashlib</code>, <code>ecdsa</code>).</li>
+          </ul>
         </div>
       ),
       imgUrl: blockchainImg,
@@ -139,7 +350,7 @@ export const Projects = () => {
           <h3>University of Guelph</h3>
           <p><strong>Honours Bachelor of Computing</strong></p>
           <br />
-          <p style={{ fontStyle: "italic" }}>
+          <p>
             Graduated at the top of my class, showcasing academic excellence and a strong foundation in computing.
           </p>
         </div>
@@ -149,11 +360,48 @@ export const Projects = () => {
     {
       title: "Software Engineering Major",
       shortDescription: "University of Guelph",
+      fullDescription: (
+        <div>
+          <br />
+          <h3>University of Guelph</h3>
+          <p><strong>Honours Bachelor of Computing</strong></p>
+          <br />
+          <ul>
+            <li><strong>Programming Proficiency:</strong> Gaining expertise in multiple programming paradigms and languages.</li>
+            <li><strong>Algorithmic Thinking:</strong> Designing and analyzing efficient algorithms.</li>
+            <li><strong>Software Engineering:</strong> Developing, testing, and maintaining software systems.</li>
+            <li><strong>Systems Understanding:</strong> Comprehending operating systems, compilers, and computer architecture.</li>
+            <li><strong>Mathematical Foundations:</strong> Applying calculus, linear algebra, and statistics in computing contexts.</li>
+            <li><strong>Problem-Solving:</strong> Employing logical and analytical skills to tackle complex computing challenges.</li>
+            <li><strong>Team Collaboration:</strong> Working effectively in group settings to develop software solutions.</li>
+            <li><strong>Communication:</strong> Articulating technical concepts clearly in both written and oral forms.</li>
+          </ul>
+        </div>
+      ),
       imgUrl: softengImg,
     },
     {
       title: "Business Minor",
       shortDescription: "University of Guelph",
+      fullDescription: (
+        <div>
+          <br />
+          <h3>University of Guelph</h3>
+          <p><strong>Minor in Business</strong></p>
+          <br />
+          <ul>
+            <li><strong>Foundational Business Knowledge:</strong> Principles of management, marketing, finance, and economics.</li>
+            <li><strong>Strategic Thinking:</strong> Analyzing business scenarios and formulating strategies.</li>
+            <li><strong>Financial Literacy:</strong> Understanding budgeting, accounting, and financial statements.</li>
+            <li><strong>Marketing Skills:</strong> Consumer behavior, market research, and strategy development.</li>
+            <li><strong>Leadership and Teamwork:</strong> Building and leading effective teams.</li>
+            <li><strong>Problem-Solving:</strong> Critical thinking for addressing business challenges.</li>
+            <li><strong>Business Communication:</strong> Professional writing and presentation skills.</li>
+            <li><strong>Entrepreneurial Skills:</strong> Basics of new venture creation and business planning.</li>
+            <li><strong>Ethics:</strong> Awareness of corporate responsibility and ethical decision-making.</li>
+          </ul>
+        </div>
+      ),
       imgUrl: bagImg,
     },
   ];
