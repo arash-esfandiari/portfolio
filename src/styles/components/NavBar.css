@@ -14,8 +14,8 @@ nav.navbar.scrolled {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Thin border for crispness */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
-nav.navbar a.navbar-brand {
-    width: 9%;
+.nav-brand {
+    width: 12vw;
 }
 nav.navbar .navbar-nav .nav-link.navbar-link {
     font-weight: 400;
@@ -149,4 +149,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     border-color: transparent;
+}
+
+@media (max-width: 780px) {
+    .nav-brand {
+        width: 40vw;
+    }
 }
