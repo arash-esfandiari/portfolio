@@ -72,21 +72,27 @@
 /* Responsive styles */
 @media (max-width: 768px) {
     #app-store .appstore-grid {
-        grid-template-columns: repeat(2, 1fr); /* Two apps per row */
+        grid-template-columns: repeat(3, 1fr); /* Two apps per row */
         gap: 25px; /* Space between apps */
         padding: 10px; /* Consistent padding */
         justify-content: center;
     }
 
     #app-store .app-item img {
-        width: 125px; /* App icon size */
-        height: 125px;
+        width: 100px; /* App icon size */
+        height: 100px;
         border-radius: 15px; /* Rounded corners like iOS */
     }
 
     #app-store .app-item h5 {
         margin-top: 8px;
-        color: #e0e0e0;
+    }
+    #app-store .app-item:hover {
+        transform: none; /* Remove hover effect */
+        z-index: 10; /* Ensure the item appears above others */
+    }
+    #app-store .container h5 {
+        margin: 10px 5px 5px 5px;
     }
 }
 
