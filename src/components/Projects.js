@@ -512,7 +512,7 @@ export const Projects = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
-                  <h2>My Journey 🛤️</h2>
+                  <h2>Experience 🛤️</h2>
                   <p>A brief history about my professional life.</p>
                   <Tab.Container id="projects-tabs" defaultActiveKey="first">
                     <Nav
